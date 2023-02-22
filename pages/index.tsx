@@ -1,8 +1,15 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
+import styled from 'styled-components';
+import Navigation from '../components/nav';
 
-const inter = Inter({ subsets: ['latin'] });
+// import { Inter } from '@next/font/google';
+
+// const inter = Inter({ subsets: ['latin'] });
+
+const H1 = styled.h1`
+  color: red;
+`;
 
 export default function Home() {
   return (
@@ -15,7 +22,8 @@ export default function Home() {
         />
         <link rel='icon' type='image/x-icon' href={'/icons/favicon.ico'} />
       </Head>
-      <h1>哈囉 大甲媽祖</h1>
+      <Navigation></Navigation>
+      <H1>哈囉 大甲媽祖</H1>
     </>
   );
 }
