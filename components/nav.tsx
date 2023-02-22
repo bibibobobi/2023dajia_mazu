@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const Nav = styled.nav`
+  display: none;
   position: fixed;
   left: 0%;
   right: 0%;
@@ -10,16 +11,32 @@ const Nav = styled.nav`
   bottom: 0%;
   height: 76px;
   background: #8c6565;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
+
+  ${({ theme }) => theme.breakpoint.md} {
+    display: flex;
+  }
 `;
 
 const ItemsWrapper = styled.div`
   display: flex;
-  gap: 50px; /* Safari 12+ */
-  grid-gap: 50px; /* Safari 10-11 */
+
+  ${({ theme }) => theme.breakpoint.md} {
+    gap: 20px; /* Safari 12+ */
+    grid-gap: 20px; /* Safari 10-11 */
+  }
+
+  ${({ theme }) => theme.breakpoint.lg} {
+    gap: 40px; /* Safari 12+ */
+    grid-gap: 40px; /* Safari 10-11 */
+  }
+
+  ${({ theme }) => theme.breakpoint.xl} {
+    gap: 65px; /* Safari 12+ */
+    grid-gap: 65px; /* Safari 10-11 */
+  }
 `;
 
 const Li = styled.li`
@@ -39,7 +56,7 @@ export default function Navigation() {
         <Li>
           <Link href='/#hashid' scroll={false}>
             <Image
-              src='/images/event-video.svg'
+              src='/images/li-video.svg'
               alt='活動影音'
               width={160}
               height={40}
@@ -50,7 +67,7 @@ export default function Navigation() {
         <Li>
           <Link href='/#hashid' scroll={false}>
             <Image
-              src='/images/introduction.svg'
+              src='/images/li-introduction.svg'
               alt='慶典介紹'
               width={160}
               height={40}
@@ -60,7 +77,7 @@ export default function Navigation() {
         <Li>
           <Link href='/#hashid' scroll={false}>
             <Image
-              src='/images/time.svg'
+              src='/images/li-time.svg'
               alt='遶境時程'
               width={160}
               height={40}
@@ -70,7 +87,7 @@ export default function Navigation() {
         <Li>
           <Link href='/#hashid' scroll={false}>
             <Image
-              src='/images/related-news.svg'
+              src='/images/li-news.svg'
               alt='相關新聞'
               width={160}
               height={40}
