@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { EventVideo } from './icons/li-video';
+import { EventIntro } from './icons/li-intro';
+import { EventTime } from './icons/li-time';
+import { RelatedNews } from './icons/li-news';
 
 const Nav = styled.nav`
   display: none;
@@ -15,7 +19,7 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 24px;
 
-  ${({ theme }) => theme.breakpoint.md} {
+  @media (min-width: 768px) {
     display: flex;
   }
 `;
@@ -23,17 +27,12 @@ const Nav = styled.nav`
 const ItemsWrapper = styled.div`
   display: flex;
 
-  ${({ theme }) => theme.breakpoint.md} {
+  @media (min-width: 768px) {
     gap: 20px; /* Safari 12+ */
     grid-gap: 20px; /* Safari 10-11 */
   }
 
-  ${({ theme }) => theme.breakpoint.lg} {
-    gap: 40px; /* Safari 12+ */
-    grid-gap: 40px; /* Safari 10-11 */
-  }
-
-  ${({ theme }) => theme.breakpoint.xl} {
+  @media (min-width: 1200px) {
     gap: 65px; /* Safari 12+ */
     grid-gap: 65px; /* Safari 10-11 */
   }
@@ -41,57 +40,72 @@ const ItemsWrapper = styled.div`
 
 const Li = styled.li`
   list-style: none;
-  .nav-link {
-    &:hover path {
-      fill: #e14b00;
+  svg {
+    width: 104px;
+    height: 26px;
+  }
+
+  :hover svg {
+    filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7));
+    path {
+      fill: #ffffff;
     }
   }
+
+  @media (min-width: 1040px) {
+    svg {
+      width: 160px;
+      height: 40px;
+    }
+  }
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  gap: 8px; /* Safari 12+ */
+  grid-gap: 8px; /* Safari 10-11 */
 `;
 
 export default function Navigation() {
   return (
     <Nav>
-      <ItemsWrapper>Logos</ItemsWrapper>
+      <LogoWrapper>
+        <Link href='/'>
+          <Image
+            src='/icons/mnews-logo.svg'
+            alt='mnews logo'
+            width={128}
+            height={24}
+          />
+        </Link>
+        <Link href='/'>
+          <Image
+            src='/icons/tachiatemple-logo.svg'
+            alt='tachia temple logo'
+            width={80}
+            height={24}
+          />
+        </Link>
+      </LogoWrapper>
       <ItemsWrapper>
         <Li>
           <Link href='/#hashid' scroll={false}>
-            <Image
-              src='/images/li-video.svg'
-              alt='活動影音'
-              width={160}
-              height={40}
-              className='nav-link'
-            />
+            <EventVideo />
           </Link>
         </Li>
         <Li>
           <Link href='/#hashid' scroll={false}>
-            <Image
-              src='/images/li-introduction.svg'
-              alt='慶典介紹'
-              width={160}
-              height={40}
-            />
+            <EventIntro />
           </Link>
         </Li>
         <Li>
           <Link href='/#hashid' scroll={false}>
-            <Image
-              src='/images/li-time.svg'
-              alt='遶境時程'
-              width={160}
-              height={40}
-            />
+            <EventTime />
           </Link>
         </Li>
         <Li>
           <Link href='/#hashid' scroll={false}>
-            <Image
-              src='/images/li-news.svg'
-              alt='相關新聞'
-              width={160}
-              height={40}
-            />
+            <RelatedNews />
           </Link>
         </Li>
       </ItemsWrapper>
