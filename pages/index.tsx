@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Navigation from '../components/nav';
+import SideMenu from 'components/side-menu';
 
 // import { Inter } from '@next/font/google';
 
@@ -29,6 +30,7 @@ export default function Home() {
         <link rel='icon' type='image/x-icon' href={'/icons/favicon.ico'} />
       </Head>
       <Navigation></Navigation>
+      <SideMenu></SideMenu>
       <Anchor id='video' />
       <H1>活動影片</H1>
       <Anchor id='intro' />
