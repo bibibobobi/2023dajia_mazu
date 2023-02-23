@@ -8,7 +8,13 @@ import Navigation from '../components/nav';
 // const inter = Inter({ subsets: ['latin'] });
 
 const H1 = styled.h1`
+  margin-top: 100px;
+  height: 50vh;
   color: red;
+`;
+
+const Anchor = styled.div`
+  height: 1px;
 `;
 
 export default function Home() {
@@ -23,7 +29,14 @@ export default function Home() {
         <link rel='icon' type='image/x-icon' href={'/icons/favicon.ico'} />
       </Head>
       <Navigation></Navigation>
-      <H1>哈囉 大甲媽祖</H1>
+      <Anchor id='video' />
+      <H1>活動影片</H1>
+      <Anchor id='intro' />
+      <H1>慶典介紹</H1>
+      <Anchor id='time' />
+      <H1>遶境時程</H1>
+      <Anchor id='news' />
+      <H1>相關新聞</H1>
     </>
   );
 }

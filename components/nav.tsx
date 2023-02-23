@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { EventVideo } from './icons/li-video';
-import { EventIntro } from './icons/li-intro';
-import { EventTime } from './icons/li-time';
-import { RelatedNews } from './icons/li-news';
+import { navLinks } from 'constants/nav-links';
 
 const Nav = styled.nav`
   display: none;
@@ -28,8 +25,8 @@ const ItemsWrapper = styled.div`
   display: flex;
 
   @media (min-width: 768px) {
-    gap: 20px; /* Safari 12+ */
-    grid-gap: 20px; /* Safari 10-11 */
+    gap: 16px; /* Safari 12+ */
+    grid-gap: 16px; /* Safari 10-11 */
   }
 
   @media (min-width: 1200px) {
@@ -47,8 +44,10 @@ const Li = styled.li`
 
   :hover svg {
     filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7));
+    transition: 0.5s ease-in-out;
     path {
       fill: #ffffff;
+      transition: 0.3s ease-in-out;
     }
   }
 
@@ -70,14 +69,18 @@ export default function Navigation() {
   return (
     <Nav>
       <LogoWrapper>
-        <Link href='/'>
+        <a
+          href='https://www.mnews.tw/'
+          target='_blank'
+          rel='noreferrer noopenner'
+        >
           <Image
             src='/icons/mnews-logo.svg'
             alt='mnews logo'
             width={128}
             height={24}
           />
-        </Link>
+        </a>
         <Link href='/'>
           <Image
             src='/icons/tachiatemple-logo.svg'
@@ -88,26 +91,15 @@ export default function Navigation() {
         </Link>
       </LogoWrapper>
       <ItemsWrapper>
-        <Li>
-          <Link href='/#hashid' scroll={false}>
-            <EventVideo />
-          </Link>
-        </Li>
-        <Li>
-          <Link href='/#hashid' scroll={false}>
-            <EventIntro />
-          </Link>
-        </Li>
-        <Li>
-          <Link href='/#hashid' scroll={false}>
-            <EventTime />
-          </Link>
-        </Li>
-        <Li>
-          <Link href='/#hashid' scroll={false}>
-            <RelatedNews />
-          </Link>
-        </Li>
+        {navLinks.map((item) => {
+          return (
+            <Li key={item.name}>
+              <Link href={item.href} scroll={false}>
+                <item.svgIcon />
+              </Link>
+            </Li>
+          );
+        })}
       </ItemsWrapper>
       <ItemsWrapper>share icons</ItemsWrapper>
     </Nav>

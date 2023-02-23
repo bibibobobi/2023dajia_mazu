@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     background-image: url('/images/Group 212.svg');
     background-color:	#98413A;
+    scroll-behavior: smooth;
   }
   a {
     color: inherit;
