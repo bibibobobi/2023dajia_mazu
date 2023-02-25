@@ -19,9 +19,8 @@ const SideMenuWrapper = styled.nav`
   align-items: center;
   padding: 0 24px;
   visibility: ${(prop) => (prop.show ? 'visible' : 'hidden')};
-  transform: ${(prop) =>
-    prop.show ? 'translateX(0px)' : 'translateY(-235px)'};
-  transition: 0.2s ease-in;
+  transform: ${(prop) => (prop.show ? 'translateY(0px)' : 'translateX(375px)')};
+  transition: 0.3s cubic-bezier(0.8, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     display: none;
@@ -31,10 +30,15 @@ const SideMenuWrapper = styled.nav`
 const ItemsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 88px;
 `;
 
 const Li = styled.li`
   list-style: none;
+  :not(:last-child) {
+    padding-bottom: 25px;
+  }
+
   svg {
     width: 104px;
     height: 26px;
@@ -62,6 +66,7 @@ const IconsWrapper = styled.div`
   gap: 8px; /* Safari 12+ */
   grid-gap: 8px; /* Safari 10-11 */
   color: #fff;
+  padding-bottom: 64px;
 `;
 
 const ToggleButton = styled.div`
@@ -78,7 +83,7 @@ const ToggleButton = styled.div`
   z-index: 50;
   svg {
     max-width: 28px;
-    transition-duration: 0.3s;
+    transition-duration: 0.1s;
     transform: ${(prop) => (prop.show ? 'rotate(90deg)' : 'rotate(0deg)')};
   }
 
@@ -126,8 +131,8 @@ export default function SideMenu() {
             <Image
               src='/icons/mnews-logo.svg'
               alt='mnews logo'
-              width={128}
-              height={24}
+              width={80}
+              height={15}
             />
           </a>
           <Link href='/'>
@@ -139,7 +144,32 @@ export default function SideMenu() {
             />
           </Link>
         </LogoWrapper>
-        <IconsWrapper>share icons</IconsWrapper>
+        <IconsWrapper>
+          <Link href='/'>
+            <Image
+              src='/icons/fb.svg'
+              alt='facebook logo'
+              width={28}
+              height={28}
+            />
+          </Link>
+          <Link href='/'>
+            <Image
+              src='/icons/line.svg'
+              alt='line logo'
+              width={28}
+              height={28}
+            />
+          </Link>
+          <Link href='/'>
+            <Image
+              src='/icons/link.svg'
+              alt='copy link'
+              width={28}
+              height={28}
+            />
+          </Link>
+        </IconsWrapper>
       </SideMenuWrapper>
     </>
   );

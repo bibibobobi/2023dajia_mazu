@@ -14,10 +14,6 @@ const H1 = styled.h1`
   color: red;
 `;
 
-const Anchor = styled.div`
-  height: 1px;
-`;
-
 export default function Home() {
   return (
     <>
@@ -29,16 +25,12 @@ export default function Home() {
         />
         <link rel='icon' type='image/x-icon' href={'/icons/favicon.ico'} />
       </Head>
-      <Navigation></Navigation>
-      <SideMenu></SideMenu>
-      <Anchor id='video' />
-      <H1>活動影片</H1>
-      <Anchor id='intro' />
-      <H1>慶典介紹</H1>
-      <Anchor id='time' />
-      <H1>遶境時程</H1>
-      <Anchor id='news' />
-      <H1>相關新聞</H1>
+      <Navigation />
+      <SideMenu />
+      <H1 id='video'>活動影片</H1>
+      <H1 id='intro'>慶典介紹</H1>
+      <H1 id='time'>遶境時程</H1>
+      <H1 id='news'>相關新聞</H1>
     </>
   );
 }
