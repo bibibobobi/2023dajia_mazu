@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
+import BottomNav from '../components/nav-mob';
 
 // import { Inter } from '@next/font/google';
 
@@ -31,6 +32,7 @@ export default function Home() {
       <H1 id='intro'>慶典介紹</H1>
       <H1 id='time'>遶境時程</H1>
       <H1 id='news'>相關新聞</H1>
+      <BottomNav />
     </>
   );
 }

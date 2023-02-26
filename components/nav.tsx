@@ -65,7 +65,7 @@ const LogoWrapper = styled.div`
   grid-gap: 8px; /* Safari 10-11 */
 `;
 
-export default function Navigation() {
+export default function BottomNav() {
   return (
     <Nav>
       <LogoWrapper>

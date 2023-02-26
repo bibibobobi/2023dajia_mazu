@@ -11,22 +11,22 @@ type NavLinks = {
 
 const navLinks: NavLinks[] = [
   {
-    name: 'video',
+    name: '活動影音',
     href: '/#video',
     svgIcon: EventVideo,
   },
   {
-    name: 'intro',
+    name: '慶典介紹',
     href: '/#intro',
     svgIcon: EventIntro,
   },
   {
-    name: 'time',
+    name: '遶境時程',
     href: '/#time',
     svgIcon: EventTime,
   },
   {
-    name: 'news',
+    name: '相關新聞',
     href: '/#news',
     svgIcon: RelatedNews,
   },

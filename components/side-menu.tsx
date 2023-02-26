@@ -20,7 +20,12 @@ const SideMenuWrapper = styled.nav`
   padding: 0 24px;
   visibility: ${(prop) => (prop.show ? 'visible' : 'hidden')};
   transform: ${(prop) => (prop.show ? 'translateY(0px)' : 'translateX(375px)')};
-  transition: 0.3s cubic-bezier(0.8, 0, 0.2, 1);
+  transition: 0.2s cubic-bezier(0.8, 0, 0.2, 1);
+
+  @media (min-width: 375px) {
+    transform: ${(prop) =>
+      prop.show ? 'translateY(0px)' : 'translateX(767px)'};
+  }
 
   @media (min-width: 768px) {
     display: none;
@@ -40,8 +45,8 @@ const Li = styled.li`
   }
 
   svg {
-    width: 104px;
-    height: 26px;
+    width: 121px;
+    height: 30px;
   }
 
   :hover svg {
@@ -66,7 +71,7 @@ const IconsWrapper = styled.div`
   gap: 8px; /* Safari 12+ */
   grid-gap: 8px; /* Safari 10-11 */
   color: #fff;
-  padding-bottom: 64px;
+  padding-bottom: 84px;
 `;
 
 const ToggleButton = styled.div`
