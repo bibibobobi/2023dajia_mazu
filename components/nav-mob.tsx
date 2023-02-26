@@ -42,7 +42,7 @@ const Li = styled.li`
   }
 `;
 
-export default function Navigation() {
+export default function BottomNav() {
   return (
     <Nav>
       <ItemsWrapper>

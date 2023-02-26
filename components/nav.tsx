@@ -15,6 +15,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
+  z-index: 99;
 
   @media (min-width: 768px) {
     display: flex;
@@ -65,7 +66,7 @@ const LogoWrapper = styled.div`
   grid-gap: 8px; /* Safari 10-11 */
 `;
 
-export default function BottomNav() {
+export default function Navigation() {
   return (
     <Nav>
       <LogoWrapper>

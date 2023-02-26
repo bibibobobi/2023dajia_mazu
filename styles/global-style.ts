@@ -1,5 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
+// import { Inter } from '@next/font/google';
+
+// const inter = Inter({ subsets: ['latin'] });
+
 export const GlobalStyles = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: border-box;

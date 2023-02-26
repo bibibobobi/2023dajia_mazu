@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
 import BottomNav from '../components/nav-mob';
-
-// import { Inter } from '@next/font/google';
-
-// const inter = Inter({ subsets: ['latin'] });
+import Header from '../components/header';
 
 const H1 = styled.h1`
   margin-top: 100px;
@@ -28,6 +25,7 @@ export default function Home() {
       </Head>
       <Navigation />
       <SideMenu />
+      <Header />
       <H1 id='video'>活動影片</H1>
       <H1 id='intro'>慶典介紹</H1>
       <H1 id='time'>遶境時程</H1>
