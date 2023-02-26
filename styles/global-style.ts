@@ -13,6 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     margin: 0;
     background-image: url('/images/Group 212.svg');
+    background-attachment: fixed;
     background-color:	#98413A;
     scroll-behavior: smooth;
   }

@@ -5,12 +5,10 @@ import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
 import BottomNav from '../components/nav-mob';
 import Header from '../components/header';
-
-const H1 = styled.h1`
-  margin-top: 100px;
-  height: 50vh;
-  color: red;
-`;
+import SectionVideo from '../components/section-video';
+import SectionIntro from 'components/section-intro';
+import SectionTime from 'components/section-time';
+import SectionNews from 'components/section-news';
 
 export default function Home() {
   return (
@@ -26,10 +24,14 @@ export default function Home() {
       <Navigation />
       <SideMenu />
       <Header />
-      <H1 id='video'>活動影片</H1>
-      <H1 id='intro'>慶典介紹</H1>
-      <H1 id='time'>遶境時程</H1>
-      <H1 id='news'>相關新聞</H1>
+      <div id='video' />
+      <SectionVideo />
+      <div id='intro' />
+      <SectionIntro />
+      <div id='time' />
+      <SectionTime />
+      <div id='news' />
+      <SectionNews />
       <BottomNav />
     </>
   );

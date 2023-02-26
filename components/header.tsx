@@ -1,23 +1,44 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+const HeaderWrapper = styled.header`
+  width: 90%;
+  margin: 0 auto;
+  position: 'relative';
+  /* background-color: #00ffff78; */
+
+  @media (min-width: 768px) {
+    padding: 86px 0 10px 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 160px 0 74px 0;
+  }
+`;
+
 const HeroPcWrapper = styled.div`
   display: none;
-  /* background-color: #00ffff78; */
-  position: 'relative';
+  width: 100%;
+
+  @media (min-width: 970px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const HeroTabletWrapper = styled.div`
+  display: none;
+  width: 100%;
 
   @media (min-width: 768px) {
     display: flex;
-    position: 'relative';
     justify-content: center;
     align-items: center;
-    width: 90%;
-    height: 70vh;
   }
 
   @media (min-width: 970px) {
-    width: 90%;
-    height: 80vh;
+    display: none;
   }
 `;
 
@@ -33,15 +54,27 @@ const HeroMobWrapper = styled.div`
 
 export default function Header() {
   return (
-    <>
+    <HeaderWrapper>
       <HeroPcWrapper>
         <Image
           src='/images/hero-pc.svg'
           alt='Hero Image desktop'
-          fill
-          style={{ objectFit: 'contain' }}
+          // fill
+          // style={{ objectFit: 'contain' }}
+          width={970}
+          height={400}
         />
       </HeroPcWrapper>
+      <HeroTabletWrapper>
+        <Image
+          src='/images/hero-pc.svg'
+          alt='Hero Image desktop'
+          // fill
+          // style={{ objectFit: 'contain' }}
+          width={723}
+          height={299}
+        />
+      </HeroTabletWrapper>
       <HeroMobWrapper>
         <Image
           src='/images/hero-mob.svg'
@@ -50,6 +83,6 @@ export default function Header() {
           height={329}
         />
       </HeroMobWrapper>
-    </>
+    </HeaderWrapper>
   );
 }
