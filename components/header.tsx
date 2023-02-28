@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const HeaderWrapper = styled.header`
   width: 90%;
   margin: 0 auto;
-  position: 'relative';
-  /* background-color: #00ffff78; */
+  pointer-events: none;
+  user-select: none;
 
   @media (min-width: 768px) {
     padding: 86px 0 10px 0;
