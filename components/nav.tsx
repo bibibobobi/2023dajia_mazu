@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
 
 type LiProps = {
-  active: boolean;
+  active?: boolean;
 };
 
 type NavigationProps = {
@@ -50,11 +50,11 @@ const Li = styled.li<LiProps>`
     width: 104px;
     height: 26px;
     filter: ${(prop) =>
-      prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : ''};
-    transition: ${(prop) => (prop.active ? '0.5s ease-in-out' : '')};
+      prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : 'none'};
+    transition: 0.5s ease-in-out;
     path {
       fill: ${(prop) => (prop.active ? '#ffffff' : '')};
-      transition: ${(prop) => (prop.active ? '0.3s ease-in-out' : '')};
+      transition: 0.3s ease-in-out;
     }
   }
 
@@ -109,8 +109,10 @@ export default function Navigation({ activeElement }: NavigationProps) {
       </LogoWrapper>
       <ItemsWrapper>
         {navLinks.map((item) => {
+          const isActive =
+            activeElement === item.name && activeElement !== undefined;
           return (
-            <Li key={item.name} active={activeElement === item.name}>
+            <Li key={item.name} active={isActive}>
               <Link href={item.href} scroll={false}>
                 <item.svgIcon />
               </Link>

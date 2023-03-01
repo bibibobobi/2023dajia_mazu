@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import styled from 'styled-components';
 import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
 import BottomNav from '../components/nav-mob';
@@ -13,7 +11,7 @@ import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
 
 export default function Home(): JSX.Element {
-  const { ref: ref1, inView: inView1 } = useInView({ threshold: 0.3 });
+  const { ref: ref1, inView: inView1 } = useInView({ threshold: 0.4 });
   const { ref: ref2, inView: inView2 } = useInView({ threshold: 0.2 });
   const { ref: ref3, inView: inView3 } = useInView({ threshold: 0.2 });
   const { ref: ref4, inView: inView4 } = useInView({ threshold: 0.2 });
