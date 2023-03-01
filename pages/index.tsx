@@ -12,33 +12,26 @@ import SectionNews from 'components/section-news';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
 
-export default function Home() {
-  const { ref: ref1, inView: inView1 } = useInView();
+export default function Home(): JSX.Element {
+  const { ref: ref1, inView: inView1 } = useInView({ threshold: 0.3 });
+  const { ref: ref2, inView: inView2 } = useInView({ threshold: 0.2 });
+  const { ref: ref3, inView: inView3 } = useInView({ threshold: 0.2 });
+  const { ref: ref4, inView: inView4 } = useInView({ threshold: 0.2 });
 
-  const { ref: ref2, inView: inView2 } = useInView();
-
-  const { ref: ref3, inView: inView3 } = useInView();
-
-  const { ref: ref4, inView: inView4 } = useInView();
-
-  const [activeElement, setActiveElement] = useState('#');
+  const [activeElement, setActiveElement] = useState('');
 
   useEffect(() => {
     if (inView1) {
-      setActiveElement('#video');
-      console.log('video');
+      setActiveElement('video');
     }
     if (inView2) {
-      setActiveElement('#intro');
-      console.log('intro');
+      setActiveElement('intro');
     }
     if (inView3) {
-      setActiveElement('#time');
-      console.log('time');
+      setActiveElement('time');
     }
     if (inView4) {
-      setActiveElement('#news');
-      console.log('news');
+      setActiveElement('news');
     }
   }, [inView1, inView2, inView3, inView4]);
 
@@ -53,7 +46,7 @@ export default function Home() {
         <link rel='icon' type='image/x-icon' href={'/icons/favicon.ico'} />
       </Head>
       <Navigation activeElement={activeElement} />
-      <SideMenu />
+      <SideMenu activeElement={activeElement} />
       <Header />
 
       <SectionVideo innerRef={ref1} />
@@ -61,7 +54,7 @@ export default function Home() {
       <SectionTime innerRef={ref3} />
       <SectionNews innerRef={ref4} />
 
-      <BottomNav />
+      <BottomNav activeElement={activeElement} />
     </>
   );
 }

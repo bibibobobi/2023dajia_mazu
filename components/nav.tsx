@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
 
+type LiProps = {
+  active: boolean;
+};
+
+type NavigationProps = {
+  activeElement: string;
+};
+
 const Nav = styled.nav`
   display: none;
   position: fixed;
@@ -36,10 +44,6 @@ const ItemsWrapper = styled.div`
   }
 `;
 
-type LiProps = {
-  active: boolean;
-};
-
 const Li = styled.li<LiProps>`
   list-style: none;
   svg {
@@ -47,9 +51,10 @@ const Li = styled.li<LiProps>`
     height: 26px;
     filter: ${(prop) =>
       prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : ''};
+    transition: ${(prop) => (prop.active ? '0.5s ease-in-out' : '')};
     path {
       fill: ${(prop) => (prop.active ? '#ffffff' : '')};
-      transition: 0.3s ease-in-out;
+      transition: ${(prop) => (prop.active ? '0.3s ease-in-out' : '')};
     }
   }
 
@@ -76,7 +81,7 @@ const LogoWrapper = styled.div`
   grid-gap: 8px; /* Safari 10-11 */
 `;
 
-export default function Navigation({ activeElement }) {
+export default function Navigation({ activeElement }: NavigationProps) {
   return (
     <Nav>
       <LogoWrapper>
@@ -105,7 +110,7 @@ export default function Navigation({ activeElement }) {
       <ItemsWrapper>
         {navLinks.map((item) => {
           return (
-            <Li key={item.name}>
+            <Li key={item.name} active={activeElement === item.name}>
               <Link href={item.href} scroll={false}>
                 <item.svgIcon />
               </Link>

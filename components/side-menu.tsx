@@ -9,6 +9,14 @@ type SideMenuWrapperProps = {
   show: boolean;
 };
 
+type NavigationProps = {
+  activeElement: string;
+};
+
+type ToggleButtonProps = {
+  show: boolean;
+};
+
 const SideMenuWrapper = styled.nav<SideMenuWrapperProps>`
   display: flex;
   flex-direction: column;
@@ -42,7 +50,11 @@ const ItemsWrapper = styled.div`
   padding-top: 88px;
 `;
 
-const Li = styled.li`
+type LiProps = {
+  active: boolean;
+};
+
+const Li = styled.li<LiProps>`
   list-style: none;
   :not(:last-child) {
     padding-bottom: 25px;
@@ -51,6 +63,12 @@ const Li = styled.li`
   svg {
     width: 121px;
     height: 30px;
+    filter: ${(prop) =>
+      prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : ''};
+    path {
+      fill: ${(prop) => (prop.active ? '#ffffff' : '')};
+      transition: 0.3s ease-in-out;
+    }
   }
 
   :hover svg {
@@ -78,10 +96,6 @@ const IconsWrapper = styled.div`
   padding-bottom: 84px;
 `;
 
-type ToggleButtonProps = {
-  show: boolean;
-};
-
 const ToggleButton = styled.div<ToggleButtonProps>`
   width: 28px;
   height: 28px;
@@ -105,7 +119,7 @@ const ToggleButton = styled.div<ToggleButtonProps>`
   }
 `;
 
-export default function SideMenu() {
+export default function SideMenu({ activeElement }: NavigationProps) {
   const [show, setShow] = useState(false);
   return (
     <>
@@ -121,7 +135,7 @@ export default function SideMenu() {
         <ItemsWrapper>
           {navLinks.map((item) => {
             return (
-              <Li key={item.name}>
+              <Li key={item.name} active={activeElement === item.name}>
                 <Link
                   href={item.href}
                   scroll={false}

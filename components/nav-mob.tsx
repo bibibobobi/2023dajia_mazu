@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
 
+type LiProps = {
+  active: boolean;
+};
+
+type NavigationProps = {
+  activeElement: string;
+};
+
 const Nav = styled.nav`
   display: flex;
   position: fixed;
@@ -26,7 +34,7 @@ const ItemsWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const Li = styled.li`
+const Li = styled.li<LiProps>`
   list-style: none;
 
   p {
@@ -35,6 +43,9 @@ const Li = styled.li`
     font-size: 14px;
     letter-spacing: 0.5px;
     color: #98413a;
+
+    color: ${(prop) => (prop.active ? '#ffffffe3' : '')};
+    transition: ${(prop) => (prop.active ? '0.3s ease-in-out' : '')};
     :hover {
       color: #ffffffe3;
       transition: 0.3s ease-in-out;
@@ -42,15 +53,15 @@ const Li = styled.li`
   }
 `;
 
-export default function BottomNav() {
+export default function BottomNav({ activeElement }: NavigationProps) {
   return (
     <Nav>
       <ItemsWrapper>
         {navLinks.map((item) => {
           return (
-            <Li key={item.name}>
+            <Li key={item.name} active={activeElement === item.name}>
               <Link href={item.href} scroll={false}>
-                <p>{item.name}</p>
+                <p>{item.title}</p>
               </Link>
             </Li>
           );

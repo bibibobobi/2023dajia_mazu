@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventIntro } from '../components/icons/li-intro';
+import { RefObject } from 'react';
 
 const Section = styled.section`
   width: 90%;
-  height: 50vh;
+  height: 100vh;
   margin: 0 auto;
+  @media (min-width: 768px) {
+    padding-top: 86px;
+  }
 `;
 
-export default function SectionIntro({ innerRef }) {
+interface SectionProps {
+  innerRef: RefObject<HTMLDivElement>;
+}
+
+export default function SectionIntro({ innerRef }: SectionProps): JSX.Element {
   return (
     <Section id='intro' ref={innerRef}>
       <Title svgIcon={EventIntro} />

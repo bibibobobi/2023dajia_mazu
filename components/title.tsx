@@ -8,7 +8,6 @@ const TitleWrapper = styled.div`
   height: 78px;
 
   @media (min-width: 768px) {
-    padding-top: 86px;
     height: 108px;
   }
 

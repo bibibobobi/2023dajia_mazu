@@ -5,28 +5,33 @@ import { RelatedNews } from '../components/icons/li-news';
 
 type NavLinks = {
   name: string;
+  title: string;
   href: string;
   svgIcon: any;
 };
 
 const navLinks: NavLinks[] = [
   {
-    name: '活動影音',
+    name: 'video',
+    title: '活動影音',
     href: '/#video',
     svgIcon: EventVideo,
   },
   {
-    name: '慶典介紹',
+    name: 'intro',
+    title: '慶典介紹',
     href: '/#intro',
     svgIcon: EventIntro,
   },
   {
-    name: '遶境時程',
+    name: 'time',
+    title: '遶境時程',
     href: '/#time',
     svgIcon: EventTime,
   },
   {
-    name: '相關新聞',
+    name: 'news',
+    title: '相關新聞',
     href: '/#news',
     svgIcon: RelatedNews,
   },
