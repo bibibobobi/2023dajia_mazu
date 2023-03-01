@@ -14,11 +14,15 @@ import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 
 const Section = styled.section`
-  width: 90%;
+  width: 100%;
   height: 100vh;
   margin: 0 auto;
   @media (min-width: 768px) {
     padding-top: 86px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 90%;
   }
 `;
 
@@ -33,16 +37,36 @@ const SwiperWrapper = styled.div`
   }
 
   .swiper-slide {
-    width: 100%;
-    height: 100%;
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: #ffffff99;
 
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+    color: #ffffff86;
+    @media (min-width: 1200px) {
+      display: block;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: #0d0505;
+    border: 1px solid #000000;
+    width: 12px;
+    height: 12px;
+  }
+  .swiper-pagination-bullet-active {
+    background: #ddcf21;
+    border: 1px solid #000000;
+    width: 12px;
+    height: 12px;
   }
 `;
 
@@ -54,7 +78,9 @@ export default function SectionVideo({ innerRef }: SectionProps): JSX.Element {
         <Swiper
           cssMode={true}
           navigation={true}
-          pagination={true}
+          pagination={{
+            clickable: true,
+          }}
           mousewheel={true}
           keyboard={true}
           loop={true}
