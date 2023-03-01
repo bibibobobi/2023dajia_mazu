@@ -5,7 +5,11 @@ import { navLinks } from 'constants/nav-links';
 import { useState } from 'react';
 import { MenuIcon } from './icons/menu-icon';
 
-const SideMenuWrapper = styled.nav`
+type SideMenuWrapperProps = {
+  show: boolean;
+};
+
+const SideMenuWrapper = styled.nav<SideMenuWrapperProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -74,7 +78,11 @@ const IconsWrapper = styled.div`
   padding-bottom: 84px;
 `;
 
-const ToggleButton = styled.div`
+type ToggleButtonProps = {
+  show: boolean;
+};
+
+const ToggleButton = styled.div<ToggleButtonProps>`
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -138,6 +146,7 @@ export default function SideMenu() {
               alt='mnews logo'
               width={80}
               height={15}
+              priority
             />
           </a>
           <Link href='/'>

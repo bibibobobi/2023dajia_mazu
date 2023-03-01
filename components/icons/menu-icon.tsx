@@ -14,8 +14,8 @@ export function MenuIcon(): JSX.Element {
         x2='21'
         y2='9'
         stroke='#98413A'
-        stroke-width='2'
-        stroke-linecap='round'
+        strokeWidth='2'
+        strokeLinecap='round'
       />
       <line
         x1='7'
@@ -23,8 +23,8 @@ export function MenuIcon(): JSX.Element {
         x2='21'
         y2='13'
         stroke='#98413A'
-        stroke-width='2'
-        stroke-linecap='round'
+        strokeWidth='2'
+        strokeLinecap='round'
       />
       <line
         x1='7'
@@ -32,8 +32,8 @@ export function MenuIcon(): JSX.Element {
         x2='21'
         y2='17'
         stroke='#98413A'
-        stroke-width='2'
-        stroke-linecap='round'
+        strokeWidth='2'
+        strokeLinecap='round'
       />
     </svg>
   );

@@ -8,10 +8,10 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-export default function SectionVideo() {
+export default function SectionVideo({ innerRef }) {
   return (
-    <Section>
-      <Title title='活動影音' svgIcon={EventVideo} />
+    <Section id='video' ref={innerRef}>
+      <Title svgIcon={EventVideo} />
     </Section>
   );
 }

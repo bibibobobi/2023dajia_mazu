@@ -36,11 +36,21 @@ const ItemsWrapper = styled.div`
   }
 `;
 
-const Li = styled.li`
+type LiProps = {
+  active: boolean;
+};
+
+const Li = styled.li<LiProps>`
   list-style: none;
   svg {
     width: 104px;
     height: 26px;
+    filter: ${(prop) =>
+      prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : ''};
+    path {
+      fill: ${(prop) => (prop.active ? '#ffffff' : '')};
+      transition: 0.3s ease-in-out;
+    }
   }
 
   :hover svg {
@@ -66,7 +76,7 @@ const LogoWrapper = styled.div`
   grid-gap: 8px; /* Safari 10-11 */
 `;
 
-export default function Navigation() {
+export default function Navigation({ activeElement }) {
   return (
     <Nav>
       <LogoWrapper>
@@ -80,6 +90,7 @@ export default function Navigation() {
             alt='mnews logo'
             width={128}
             height={24}
+            priority
           />
         </a>
         <Link href='/'>

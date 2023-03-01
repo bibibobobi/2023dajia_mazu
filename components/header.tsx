@@ -8,17 +8,18 @@ const HeaderWrapper = styled.header`
   user-select: none;
 
   @media (min-width: 768px) {
-    padding: 86px 0 10px 0;
+    padding: 116px 0 0 0;
   }
 
   @media (min-width: 1200px) {
-    padding: 160px 0 74px 0;
+    padding: 190px 0 26px 0;
   }
 `;
 
 const HeroPcWrapper = styled.div`
   display: none;
-  width: 100%;
+  width: auto;
+  height: auto;
 
   @media (min-width: 970px) {
     display: flex;
@@ -29,7 +30,8 @@ const HeroPcWrapper = styled.div`
 
 const HeroTabletWrapper = styled.div`
   display: none;
-  width: 100%;
+  width: auto;
+  height: auto;
 
   @media (min-width: 768px) {
     display: flex;
@@ -59,20 +61,18 @@ export default function Header() {
         <Image
           src='/images/hero-pc.svg'
           alt='Hero Image desktop'
-          // fill
-          // style={{ objectFit: 'contain' }}
           width={970}
           height={400}
+          priority
         />
       </HeroPcWrapper>
       <HeroTabletWrapper>
         <Image
           src='/images/hero-pc.svg'
           alt='Hero Image desktop'
-          // fill
-          // style={{ objectFit: 'contain' }}
           width={723}
           height={299}
+          priority
         />
       </HeroTabletWrapper>
       <HeroMobWrapper>

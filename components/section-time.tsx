@@ -8,10 +8,10 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-export default function SectionTime() {
+export default function SectionTime({ innerRef }) {
   return (
-    <Section>
-      <Title title='遶境時程' svgIcon={EventTime} />
+    <Section id='time' ref={innerRef}>
+      <Title svgIcon={EventTime} />
     </Section>
   );
 }

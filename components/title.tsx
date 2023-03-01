@@ -5,11 +5,11 @@ const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #00ffff86; */
-  height: 108px;
+  height: 78px;
 
   @media (min-width: 768px) {
-    margin-top: 76px;
+    padding-top: 86px;
+    height: 108px;
   }
 
   .dot-left {
@@ -66,7 +66,11 @@ const SvgWrapper = styled.div`
   }
 `;
 
-export default function Title(props) {
+type TitleProps = {
+  svgIcon: any;
+};
+
+export default function Title(props: TitleProps) {
   return (
     <TitleWrapper>
       <Line />

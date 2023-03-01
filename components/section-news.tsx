@@ -8,10 +8,10 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-export default function SectionNews() {
+export default function SectionNews({ innerRef }) {
   return (
-    <Section>
-      <Title title='慶典介紹' svgIcon={RelatedNews} />
+    <Section id='news' ref={innerRef}>
+      <Title svgIcon={RelatedNews} />
     </Section>
   );
 }
