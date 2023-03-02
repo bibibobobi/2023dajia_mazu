@@ -1,7 +1,12 @@
+import { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventVideo } from '../components/icons/li-video';
 import { RefObject } from 'react';
+
+// Import Youtube components
+import YouTube from 'react-youtube';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -10,7 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// import required modules
+// import required modules for Swiper
 import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 
 const Section = styled.section`
@@ -26,14 +31,10 @@ const Section = styled.section`
   }
 `;
 
-interface SectionProps {
-  innerRef: RefObject<HTMLDivElement>;
-}
-
 const SwiperWrapper = styled.div`
   .mySwiper {
     width: 100%;
-    height: 500px;
+    height: 550px;
   }
 
   .swiper-slide {
@@ -44,7 +45,7 @@ const SwiperWrapper = styled.div`
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
   }
 
   .swiper-button-prev,
@@ -71,16 +72,48 @@ const SwiperWrapper = styled.div`
 `;
 
 const YoutubeContainer = styled.div`
-  background-color: #00ffff86;
-  height: 80%;
   width: 100%;
+  height: 80%;
 
   @media (min-width: 1200px) {
     width: 90%;
   }
 `;
 
-export default function SectionVideo({ innerRef }: SectionProps): JSX.Element {
+interface SectionProps {
+  innerRef: RefObject<HTMLDivElement>;
+  playlist: string[];
+}
+
+export default function SectionVideo({
+  innerRef,
+  playlist,
+}: SectionProps): JSX.Element {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handleSlideChange = (swiper: Swiper) => {
+    setCurrentIndex(swiper.activeIndex);
+  };
+
+  const handleVideoPlay = (event: any) => {
+    setIsVideoPlaying(true);
+  };
+
+  const handleVideoPause = (event: any) => {
+    setIsVideoPlaying(false);
+  };
+
+  const handleVideoStateChange = (event: any) => {
+    console.log({ event });
+    if (event.data === 1) {
+      // Playing
+      setIsVideoPlaying(true);
+    } else {
+      setIsVideoPlaying(false);
+    }
+  };
+
   return (
     <Section id='video' ref={innerRef}>
       <Title svgIcon={EventVideo} />
@@ -94,23 +127,28 @@ export default function SectionVideo({ innerRef }: SectionProps): JSX.Element {
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           mousewheel={true}
           keyboard={true}
           loop={true}
           modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
           className='mySwiper'
+          onSlideChange={handleSlideChange}
         >
-          <SwiperSlide className='swiper-slide'>
-            <YoutubeContainer>Hi Youtube</YoutubeContainer>
-          </SwiperSlide>
-          {/* <SwiperSlide className='swiper-slide'>Slide 2</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 3</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 4</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 5</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 6</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 7</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 8</SwiperSlide> */}
+          {playlist.map((videoId, index) => (
+            <SwiperSlide key={index} className='swiper-slide'>
+              <YoutubeContainer>
+                <YouTube
+                  videoId={videoId}
+                  opts={{ width: '100%', height: '500px' }}
+                  onPlay={handleVideoPlay}
+                  onPause={handleVideoPause}
+                  onStateChange={handleVideoStateChange}
+                />
+              </YoutubeContainer>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </SwiperWrapper>
     </Section>

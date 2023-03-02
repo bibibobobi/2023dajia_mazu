@@ -110,7 +110,7 @@ export default function Home(): JSX.Element {
       <SideMenu activeElement={activeElement} />
       <Header />
 
-      <SectionVideo innerRef={ref1} />
+      <SectionVideo innerRef={ref1} playlist={playlist} />
       <SectionIntro innerRef={ref2} />
       <SectionTime innerRef={ref3} />
       <SectionNews innerRef={ref4} />
