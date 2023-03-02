@@ -33,13 +33,13 @@ interface SectionProps {
 const SwiperWrapper = styled.div`
   .mySwiper {
     width: 100%;
-    height: 300px;
+    height: 500px;
   }
 
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #ffffff99;
+    /* background: #ffffff99; */
 
     /* Center slide text vertically */
     display: flex;
@@ -58,15 +58,25 @@ const SwiperWrapper = styled.div`
 
   .swiper-pagination-bullet {
     background: #0d0505;
-    border: 1px solid #000000;
+    border: 1.5px solid #000000;
     width: 12px;
     height: 12px;
   }
   .swiper-pagination-bullet-active {
     background: #ddcf21;
-    border: 1px solid #000000;
+    border: 1.5px solid #000000;
     width: 12px;
     height: 12px;
+  }
+`;
+
+const YoutubeContainer = styled.div`
+  background-color: #00ffff86;
+  height: 80%;
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    width: 90%;
   }
 `;
 
@@ -81,24 +91,26 @@ export default function SectionVideo({ innerRef }: SectionProps): JSX.Element {
           pagination={{
             clickable: true,
           }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           mousewheel={true}
           keyboard={true}
           loop={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
           modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
           className='mySwiper'
         >
-          <SwiperSlide className='swiper-slide'>Slide 1</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 2</SwiperSlide>
+          <SwiperSlide className='swiper-slide'>
+            <YoutubeContainer>Hi Youtube</YoutubeContainer>
+          </SwiperSlide>
+          {/* <SwiperSlide className='swiper-slide'>Slide 2</SwiperSlide>
           <SwiperSlide className='swiper-slide'>Slide 3</SwiperSlide>
           <SwiperSlide className='swiper-slide'>Slide 4</SwiperSlide>
           <SwiperSlide className='swiper-slide'>Slide 5</SwiperSlide>
           <SwiperSlide className='swiper-slide'>Slide 6</SwiperSlide>
           <SwiperSlide className='swiper-slide'>Slide 7</SwiperSlide>
-          <SwiperSlide className='swiper-slide'>Slide 8</SwiperSlide>
+          <SwiperSlide className='swiper-slide'>Slide 8</SwiperSlide> */}
         </Swiper>
       </SwiperWrapper>
     </Section>

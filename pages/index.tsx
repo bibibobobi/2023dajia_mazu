@@ -9,6 +9,69 @@ import SectionTime from 'components/section-time';
 import SectionNews from 'components/section-news';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
+import makePlaylist from '../utils/make-playlist';
+
+const data = [
+  {
+    Name: 'Youtube',
+    order: '1',
+    Image: '-',
+    'Link / Content': 'MYPVQccHhAQ',
+    Note: '前端會將 YT 影片嵌入在活動影音區塊，上限 8 支。不滿 8 支時，有幾支就抓幾支，讓它播完之後會從頭輪播',
+  },
+  {
+    Name: 'Youtube',
+    order: '2',
+    Image: '-',
+    'Link / Content': 'Dxcc6ycZ73M',
+    Note: '',
+  },
+  {
+    Name: 'Youtube',
+    order: '3',
+    Image: '-',
+    'Link / Content': 'https://www.youtube.com/watch?v=A7n_HEH4Te8',
+    Note: '',
+  },
+  {
+    Name: 'Youtube',
+    order: '4',
+    Image: '-',
+    'Link / Content': '',
+    Note: '',
+  },
+  {
+    Name: 'Youtube',
+    order: '5',
+    Image: '-',
+    'Link / Content': '',
+    Note: '',
+  },
+  {
+    Name: 'Youtube',
+    order: '6',
+    Image: '-',
+    'Link / Content': '',
+    Note: '',
+  },
+  {
+    Name: 'Youtube',
+    order: '7',
+    Image: '-',
+    'Link / Content': '',
+    Note: '',
+  },
+  {
+    Name: 'Youtube',
+    order: '8',
+    Image: '-',
+    'Link / Content': '',
+    Note: '',
+  },
+];
+
+const playlist = makePlaylist(data);
+console.log(playlist);
 
 export default function Home(): JSX.Element {
   const { ref: ref1, inView: inView1 } = useInView({ threshold: 0.4 });
