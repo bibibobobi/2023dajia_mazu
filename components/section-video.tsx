@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventVideo } from '../components/icons/li-video';
@@ -109,6 +109,11 @@ export default function SectionVideo({
 }: SectionProps): JSX.Element {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [swiperAutoplay, setSwiperAutoplay] = useState({
+    delay: 3000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  });
 
   const handleSlideChange = (swiper: any) => {
     setCurrentIndex(swiper.activeIndex);
@@ -116,12 +121,41 @@ export default function SectionVideo({
 
   const handleVideoPlay = (event: any) => {
     setIsVideoPlaying(true);
+    setSwiperAutoplay({
+      ...swiperAutoplay,
+      disableOnInteraction: true,
+      pauseOnMouseEnter: false,
+    });
   };
 
   const handleVideoPause = (event: any) => {
     setIsVideoPlaying(false);
+    setSwiperAutoplay({
+      ...swiperAutoplay,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    });
   };
 
+  // const handleVideoStateChange = (event: any) => {
+  //   console.log({ event });
+  //   if (event.data === 1) {
+  //     // Playing
+  //     setIsVideoPlaying(true);
+  //     setSwiperAutoplay({
+  //       ...swiperAutoplay,
+  //       disableOnInteraction: true,
+  //       pauseOnMouseEnter: false,
+  //     });
+  //   } else {
+  //     setIsVideoPlaying(false);
+  //     setSwiperAutoplay({
+  //       ...swiperAutoplay,
+  //       disableOnInteraction: false,
+  //       pauseOnMouseEnter: true,
+  //     });
+  //   }
+  // };
   const handleVideoStateChange = (event: any) => {
     console.log({ event });
     if (event.data === 1) {
@@ -131,6 +165,22 @@ export default function SectionVideo({
       setIsVideoPlaying(false);
     }
   };
+
+  useEffect(() => {
+    if (isVideoPlaying) {
+      setSwiperAutoplay({
+        ...swiperAutoplay,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: false,
+      });
+    } else {
+      setSwiperAutoplay({
+        ...swiperAutoplay,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      });
+    }
+  }, [isVideoPlaying]);
 
   return (
     <Section id='video' ref={innerRef}>
@@ -142,11 +192,7 @@ export default function SectionVideo({
           pagination={{
             clickable: true,
           }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
+          autoplay={swiperAutoplay}
           mousewheel={true}
           keyboard={true}
           loop={true}
