@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Title from './title';
 import { EventTime } from './icons/li-time';
-import { RefObject } from 'react';
 
 const Section = styled.section`
   width: 90%;
@@ -13,7 +12,7 @@ const Section = styled.section`
 `;
 
 interface SectionProps {
-  innerRef: RefObject<HTMLDivElement>;
+  innerRef: any;
 }
 
 export default function SectionTime({ innerRef }: SectionProps): JSX.Element {

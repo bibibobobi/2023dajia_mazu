@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventIntro } from '../components/icons/li-intro';
-import { RefObject } from 'react';
 
 const Section = styled.section`
   width: 90%;
@@ -13,7 +12,7 @@ const Section = styled.section`
 `;
 
 interface SectionProps {
-  innerRef: RefObject<HTMLDivElement>;
+  innerRef: any;
 }
 
 export default function SectionIntro({ innerRef }: SectionProps): JSX.Element {

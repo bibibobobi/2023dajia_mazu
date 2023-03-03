@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventVideo } from '../components/icons/li-video';
-import { RefObject } from 'react';
 
 // Import Youtube components
 import YouTube from 'react-youtube';
@@ -34,7 +33,7 @@ const Section = styled.section`
 const SwiperWrapper = styled.div`
   .mySwiper {
     width: 100%;
-    height: 550px;
+    height: 580px;
   }
 
   .swiper-slide {
@@ -45,7 +44,7 @@ const SwiperWrapper = styled.div`
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
   }
 
   .swiper-button-prev,
@@ -73,7 +72,7 @@ const SwiperWrapper = styled.div`
 
 const YoutubeContainer = styled.div`
   width: 100%;
-  height: 80%;
+  height: 100%;
 
   @media (min-width: 1200px) {
     width: 90%;
@@ -81,7 +80,7 @@ const YoutubeContainer = styled.div`
 `;
 
 interface SectionProps {
-  innerRef: RefObject<HTMLDivElement>;
+  innerRef: any;
   playlist: string[];
 }
 
@@ -92,7 +91,7 @@ export default function SectionVideo({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  const handleSlideChange = (swiper: Swiper) => {
+  const handleSlideChange = (swiper: any) => {
     setCurrentIndex(swiper.activeIndex);
   };
 
@@ -141,7 +140,7 @@ export default function SectionVideo({
               <YoutubeContainer>
                 <YouTube
                   videoId={videoId}
-                  opts={{ width: '100%', height: '500px' }}
+                  opts={{ width: '100%', height: '540px' }}
                   onPlay={handleVideoPlay}
                   onPause={handleVideoPause}
                   onStateChange={handleVideoStateChange}

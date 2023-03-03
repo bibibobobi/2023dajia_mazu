@@ -22,6 +22,7 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 14px;
   width: 100%;
+  z-index: 99;
 
   @media (min-width: 768px) {
     display: none;
