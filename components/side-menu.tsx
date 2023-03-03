@@ -33,6 +33,7 @@ const SideMenuWrapper = styled.nav<SideMenuWrapperProps>`
   visibility: ${(prop) => (prop.show ? 'visible' : 'hidden')};
   transform: ${(prop) => (prop.show ? 'translateY(0px)' : 'translateX(375px)')};
   transition: 0.2s cubic-bezier(0.8, 0, 0.2, 1);
+  z-index: 9;
 
   @media (min-width: 375px) {
     transform: ${(prop) =>

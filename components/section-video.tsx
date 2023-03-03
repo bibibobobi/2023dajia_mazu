@@ -19,7 +19,7 @@ import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 
 const Section = styled.section`
   width: 100%;
-  height: 100vh;
+
   margin: 0 auto;
   @media (min-width: 768px) {
     padding-top: 86px;
@@ -33,13 +33,19 @@ const Section = styled.section`
 const SwiperWrapper = styled.div`
   .mySwiper {
     width: 100%;
-    height: 580px;
+    height: 300px;
+
+    @media (min-width: 768px) {
+      height: 550px;
+    }
+    @media (min-width: 1200px) {
+      height: 580px;
+    }
   }
 
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    /* background: #ffffff99; */
 
     /* Center slide text vertically */
     display: flex;
@@ -51,6 +57,9 @@ const SwiperWrapper = styled.div`
   .swiper-button-next {
     display: none;
     color: #ffffff86;
+    :hover {
+      color: #ffffffeb;
+    }
     @media (min-width: 1200px) {
       display: block;
     }
@@ -71,11 +80,21 @@ const SwiperWrapper = styled.div`
 `;
 
 const YoutubeContainer = styled.div`
-  width: 100%;
-  height: 100%;
-
-  @media (min-width: 1200px) {
-    width: 90%;
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    border: 0;
+    @media (min-width: 768px) {
+      height: 90%;
+    }
+    @media (min-width: 1200px) {
+      height: 90%;
+      width: 80%;
+      left: 10%;
+    }
   }
 `;
 
@@ -140,7 +159,7 @@ export default function SectionVideo({
               <YoutubeContainer>
                 <YouTube
                   videoId={videoId}
-                  opts={{ width: '100%', height: '540px' }}
+                  opts={{ width: '100%', height: '100%' }}
                   onPlay={handleVideoPlay}
                   onPause={handleVideoPause}
                   onStateChange={handleVideoStateChange}
