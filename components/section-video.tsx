@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventVideo } from '../components/icons/li-video';
@@ -107,6 +107,7 @@ export default function SectionVideo({
   innerRef,
   playlist,
 }: SectionProps): JSX.Element {
+  const playerRef = useRef<any>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [swiperAutoplay, setSwiperAutoplay] = useState({
@@ -117,6 +118,17 @@ export default function SectionVideo({
 
   const handleSlideChange = (swiper: any) => {
     setCurrentIndex(swiper.activeIndex);
+
+    // Pause the video when the slide changes
+    if (playerRef.current && playerRef.current.getInternalPlayer) {
+      const player = playerRef.current.getInternalPlayer();
+      player.pauseVideo();
+    }
+  };
+
+  const handlePlayerReady = (event: any) => {
+    // Save the YouTube player reference to the `playerRef` variable
+    playerRef.current = event.target;
   };
 
   const handleVideoPlay = (event: any) => {
@@ -137,25 +149,6 @@ export default function SectionVideo({
     });
   };
 
-  // const handleVideoStateChange = (event: any) => {
-  //   console.log({ event });
-  //   if (event.data === 1) {
-  //     // Playing
-  //     setIsVideoPlaying(true);
-  //     setSwiperAutoplay({
-  //       ...swiperAutoplay,
-  //       disableOnInteraction: true,
-  //       pauseOnMouseEnter: false,
-  //     });
-  //   } else {
-  //     setIsVideoPlaying(false);
-  //     setSwiperAutoplay({
-  //       ...swiperAutoplay,
-  //       disableOnInteraction: false,
-  //       pauseOnMouseEnter: true,
-  //     });
-  //   }
-  // };
   const handleVideoStateChange = (event: any) => {
     console.log({ event });
     if (event.data === 1) {
@@ -167,20 +160,37 @@ export default function SectionVideo({
   };
 
   useEffect(() => {
-    if (isVideoPlaying) {
-      setSwiperAutoplay({
-        ...swiperAutoplay,
-        disableOnInteraction: true,
-        pauseOnMouseEnter: false,
-      });
-    } else {
-      setSwiperAutoplay({
-        ...swiperAutoplay,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      });
-    }
-  }, [isVideoPlaying]);
+    const handleWindowResize = () => {
+      if (window.innerWidth < 768) {
+        setSwiperAutoplay({
+          ...swiperAutoplay,
+          disableOnInteraction: true,
+        });
+      } else {
+        if (isVideoPlaying) {
+          setSwiperAutoplay({
+            ...swiperAutoplay,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: false,
+          });
+        } else {
+          setSwiperAutoplay({
+            ...swiperAutoplay,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          });
+        }
+      }
+    };
+
+    handleWindowResize();
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [swiperAutoplay, isVideoPlaying]);
 
   return (
     <Section id='video' ref={innerRef}>
@@ -209,6 +219,7 @@ export default function SectionVideo({
                   onPlay={handleVideoPlay}
                   onPause={handleVideoPause}
                   onStateChange={handleVideoStateChange}
+                  onReady={handlePlayerReady}
                 />
               </YoutubeContainer>
             </SwiperSlide>
