@@ -112,7 +112,7 @@ export default function SectionVideo({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [swiperAutoplay, setSwiperAutoplay] = useState({
     delay: 3000,
-    disableOnInteraction: false,
+    disableOnInteraction: true,
     pauseOnMouseEnter: true,
   });
 
