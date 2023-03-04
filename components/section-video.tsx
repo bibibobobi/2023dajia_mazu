@@ -131,66 +131,24 @@ export default function SectionVideo({
     playerRef.current = event.target;
   };
 
-  const handleVideoPlay = (event: any) => {
-    setIsVideoPlaying(true);
-    setSwiperAutoplay({
-      ...swiperAutoplay,
-      disableOnInteraction: true,
-      pauseOnMouseEnter: false,
-    });
-  };
-
-  const handleVideoPause = (event: any) => {
-    setIsVideoPlaying(false);
-    setSwiperAutoplay({
-      ...swiperAutoplay,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    });
-  };
-
   const handleVideoStateChange = (event: any) => {
-    console.log({ event });
     if (event.data === 1) {
       // Playing
       setIsVideoPlaying(true);
+      setSwiperAutoplay({
+        ...swiperAutoplay,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: false,
+      });
     } else {
       setIsVideoPlaying(false);
+      setSwiperAutoplay({
+        ...swiperAutoplay,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      });
     }
   };
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      if (window.innerWidth < 768) {
-        setSwiperAutoplay({
-          ...swiperAutoplay,
-          disableOnInteraction: true,
-        });
-      } else {
-        if (isVideoPlaying) {
-          setSwiperAutoplay({
-            ...swiperAutoplay,
-            disableOnInteraction: true,
-            pauseOnMouseEnter: false,
-          });
-        } else {
-          setSwiperAutoplay({
-            ...swiperAutoplay,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          });
-        }
-      }
-    };
-
-    handleWindowResize();
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, [swiperAutoplay, isVideoPlaying]);
 
   return (
     <Section id='video' ref={innerRef}>
@@ -216,8 +174,6 @@ export default function SectionVideo({
                 <YouTube
                   videoId={videoId}
                   opts={{ width: '100%', height: '100%' }}
-                  onPlay={handleVideoPlay}
-                  onPause={handleVideoPause}
                   onStateChange={handleVideoStateChange}
                   onReady={handlePlayerReady}
                 />
