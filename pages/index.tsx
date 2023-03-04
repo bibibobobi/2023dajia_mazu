@@ -44,7 +44,6 @@ export default function Home({ data }: { data: Data }): JSX.Element {
   }, [inView1, inView2, inView3, inView4]);
 
   const playlist = makePlaylist(data.Youtube);
-  console.log(playlist);
 
   return (
     <>
@@ -75,7 +74,7 @@ export async function getStaticProps() {
     'https://storage.googleapis.com/static-mnews-tw-dev/json/matsu2023.json';
   const response = await axios.get(apiEndpoint);
   const data = response.data;
-  console.log(data.Youtube);
+
   return {
     props: {
       data,

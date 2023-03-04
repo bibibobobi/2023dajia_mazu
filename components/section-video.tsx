@@ -116,6 +116,15 @@ export default function SectionVideo({
     pauseOnMouseEnter: true,
   });
 
+  useEffect(() => {
+    const touchDevice = window.matchMedia(
+      '(hover: none) and (pointer: coarse)'
+    ).matches;
+    if (touchDevice) {
+      setSwiperAutoplay({ ...swiperAutoplay, delay: 300000 });
+    }
+  }, []);
+
   const handleSlideChange = (swiper: any) => {
     setCurrentIndex(swiper.activeIndex);
 
