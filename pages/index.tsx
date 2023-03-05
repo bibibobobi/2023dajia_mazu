@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
@@ -73,7 +73,7 @@ export default function Home({
   );
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const apiEndpoint =
     'https://storage.googleapis.com/static-mnews-tw-dev/json/matsu2023.json';
   const response = await axios.get(apiEndpoint);
