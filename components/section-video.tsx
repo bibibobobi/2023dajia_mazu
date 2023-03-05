@@ -116,23 +116,18 @@ export default function SectionVideo({
     pauseOnMouseEnter: true,
   });
 
-  useEffect(() => {
-    const touchDevice = window.matchMedia(
-      '(hover: none) and (pointer: coarse)'
-    ).matches;
-    if (touchDevice) {
-      setSwiperAutoplay({ ...swiperAutoplay, delay: 300000 });
-    }
-  }, []);
+  // Disable autoplay on touch devices
+  // useEffect(() => {
+  //   const touchDevice = window.matchMedia(
+  //     '(hover: none) and (pointer: coarse)'
+  //   ).matches;
+  //   if (touchDevice) {
+  //     setSwiperAutoplay({ ...swiperAutoplay, delay: 300000 });
+  //   }
+  // }, []);
 
   const handleSlideChange = (swiper: any) => {
     setCurrentIndex(swiper.activeIndex);
-
-    // Pause the video when the slide changes
-    // if (playerRef.current && playerRef.current.getInternalPlayer) {
-    //   const player = playerRef.current.getInternalPlayer();
-    //   player.pauseVideo();
-    // }
 
     // Pause all videos when the slide changes
     const players = document.getElementsByTagName('iframe');
@@ -150,6 +145,7 @@ export default function SectionVideo({
     playerRef.current = event.target;
   };
 
+  // Disable Swiper autoplay by setting delay to 300000 if any video is playing
   const handleVideoStateChange = (event: any) => {
     if (event.data === 1) {
       // Playing
@@ -158,6 +154,7 @@ export default function SectionVideo({
         ...swiperAutoplay,
         disableOnInteraction: true,
         pauseOnMouseEnter: false,
+        delay: 300000, // Set delay to 300000 if video is playing
       });
     } else {
       setIsVideoPlaying(false);
@@ -165,6 +162,7 @@ export default function SectionVideo({
         ...swiperAutoplay,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
+        delay: 3000, // Set delay to 3000 if video is not playing or paused
       });
     }
   };
