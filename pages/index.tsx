@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
@@ -12,21 +13,24 @@ import { useState, useEffect } from 'react';
 import makePlaylist from '../utils/make-playlist';
 import axios from 'axios';
 
-interface Data {
-  Youtube: {
-    id: string;
-    title: string;
-  }[];
-  // Add any other properties and their types here
-}
+type HomeProps = {
+  Youtube: [];
+  relatedPost: [];
+  Ad: [];
+  Logo: [];
+  Introduction: [];
+};
 
-export default function Home({ data }: { data: Data }): JSX.Element {
+export default function Home({
+  Youtube,
+  Introduction,
+}: HomeProps): JSX.Element {
   const { ref: ref1, inView: inView1 } = useInView({ threshold: 0.4 });
   const { ref: ref2, inView: inView2 } = useInView({ threshold: 0.2 });
   const { ref: ref3, inView: inView3 } = useInView({ threshold: 0.2 });
   const { ref: ref4, inView: inView4 } = useInView({ threshold: 0.2 });
 
-  const [activeElement, setActiveElement] = useState('');
+  const [activeElement, setActiveElement] = useState<string>('');
 
   useEffect(() => {
     if (inView1) {
@@ -43,7 +47,7 @@ export default function Home({ data }: { data: Data }): JSX.Element {
     }
   }, [inView1, inView2, inView3, inView4]);
 
-  const playlist = makePlaylist(data.Youtube);
+  const playlist = makePlaylist(Youtube);
 
   return (
     <>
@@ -60,7 +64,7 @@ export default function Home({ data }: { data: Data }): JSX.Element {
       <Header />
 
       <SectionVideo innerRef={ref1} playlist={playlist} />
-      <SectionIntro innerRef={ref2} />
+      <SectionIntro innerRef={ref2} intro={Introduction} />
       <SectionTime innerRef={ref3} />
       <SectionNews innerRef={ref4} />
 
@@ -69,15 +73,19 @@ export default function Home({ data }: { data: Data }): JSX.Element {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const apiEndpoint =
     'https://storage.googleapis.com/static-mnews-tw-dev/json/matsu2023.json';
   const response = await axios.get(apiEndpoint);
-  const data = response.data;
+  const { Youtube, relatedPost, Ad, Logo, Introduction } = response.data;
 
   return {
     props: {
-      data,
+      Youtube,
+      relatedPost,
+      Ad,
+      Logo,
+      Introduction,
     },
   };
-}
+};

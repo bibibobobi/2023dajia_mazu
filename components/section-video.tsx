@@ -30,6 +30,15 @@ const Section = styled.section`
   }
 `;
 
+const TitleWrapper = styled.div`
+  width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
+`;
+
 const SwiperWrapper = styled.div`
   .mySwiper {
     width: 100%;
@@ -154,7 +163,7 @@ export default function SectionVideo({
         ...swiperAutoplay,
         disableOnInteraction: true,
         pauseOnMouseEnter: false,
-        delay: 300000, // Set delay to 300000 if video is playing
+        delay: 300000, // Set delay to 5 mins if video is playing
       });
     } else {
       setIsVideoPlaying(false);
@@ -162,14 +171,16 @@ export default function SectionVideo({
         ...swiperAutoplay,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
-        delay: 3000, // Set delay to 3000 if video is not playing or paused
+        delay: 3000, // Set delay to 3 secs if video is not playing or paused
       });
     }
   };
 
   return (
     <Section id='video' ref={innerRef}>
-      <Title svgIcon={EventVideo} />
+      <TitleWrapper>
+        <Title svgIcon={EventVideo} />
+      </TitleWrapper>
       <SwiperWrapper>
         <Swiper
           cssMode={true}
