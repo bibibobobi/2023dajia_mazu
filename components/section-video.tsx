@@ -129,9 +129,19 @@ export default function SectionVideo({
     setCurrentIndex(swiper.activeIndex);
 
     // Pause the video when the slide changes
-    if (playerRef.current && playerRef.current.getInternalPlayer) {
-      const player = playerRef.current.getInternalPlayer();
-      player.pauseVideo();
+    // if (playerRef.current && playerRef.current.getInternalPlayer) {
+    //   const player = playerRef.current.getInternalPlayer();
+    //   player.pauseVideo();
+    // }
+
+    // Pause all videos when the slide changes
+    const players = document.getElementsByTagName('iframe');
+    for (let i = 0; i < players.length; i++) {
+      const player = players[i].contentWindow;
+      player?.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        '*'
+      );
     }
   };
 
