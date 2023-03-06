@@ -23,12 +23,14 @@ const ContentWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 360px;
-  height: 413px;
+  width: 288px;
+  height: 331px;
   margin-bottom: 36px;
   margin-top: 20px;
 
   @media (min-width: 768px) {
+    width: 360px;
+    height: 413px;
     margin-bottom: 60px;
     margin-top: 30px;
   }
@@ -84,6 +86,7 @@ export default function SectionIntro({
             alt={item?.Name}
             width={360}
             height={413}
+            style={{ height: '100%', width: '100%' }}
           />
         </ImageWrapper>
         <Desc>
