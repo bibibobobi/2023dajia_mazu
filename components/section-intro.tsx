@@ -29,7 +29,7 @@ const Desc = styled.div`
 
   p {
     color: #ffffff;
-    font-family: PingFang TC;
+    font-family: var(--notosansTC-font);
     font-weight: 400;
     font-size: 20px;
     line-height: 180%;
@@ -58,7 +58,12 @@ export default function SectionIntro({
       <Title svgIcon={EventIntro} />
       <ContentWrapper>
         <ImageWrapper>
-          <Image src={item?.Image} alt={item?.Name} width={360} height={413} />
+          <Image
+            src='/images/pilgrimage.svg'
+            alt={item?.Name}
+            width={360}
+            height={413}
+          />
         </ImageWrapper>
         <Desc>
           <p>{content}</p>
