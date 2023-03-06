@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Navigation from '../components/nav';
 import SideMenu from 'components/side-menu';
@@ -13,18 +12,15 @@ import { useState, useEffect } from 'react';
 import makePlaylist from '../utils/make-playlist';
 import axios from 'axios';
 
-type HomeProps = {
-  Youtube: [];
-  relatedPost: [];
-  Ad: [];
-  Logo: [];
-  Introduction: [];
-};
+export default function Home(): JSX.Element {
+  const [data, setData] = useState({
+    Youtube: [],
+    relatedPost: [],
+    Ad: [],
+    Logo: [],
+    Introduction: [],
+  });
 
-export default function Home({
-  Youtube,
-  Introduction,
-}: HomeProps): JSX.Element {
   const { ref: ref1, inView: inView1 } = useInView({ threshold: 0.4 });
   const { ref: ref2, inView: inView2 } = useInView({ threshold: 0.2 });
   const { ref: ref3, inView: inView3 } = useInView({ threshold: 0.2 });
@@ -33,21 +29,33 @@ export default function Home({
   const [activeElement, setActiveElement] = useState<string>('');
 
   useEffect(() => {
+    axios
+      .get('https://statics-dev.mnews.tw/json/matsu2023.json')
+      .then((response) => {
+        const data = response.data;
+        setData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const { Youtube, relatedPost, Ad, Logo, Introduction } = data;
+  const playlist = makePlaylist(Youtube);
+
+  useEffect(() => {
     if (inView1) {
       setActiveElement('video');
-    }
-    if (inView2) {
+    } else if (inView2) {
       setActiveElement('intro');
-    }
-    if (inView3) {
+    } else if (inView3) {
       setActiveElement('time');
-    }
-    if (inView4) {
+    } else if (inView4) {
       setActiveElement('news');
+    } else {
+      setActiveElement('');
     }
   }, [inView1, inView2, inView3, inView4]);
-
-  const playlist = makePlaylist(Youtube);
 
   return (
     <>
@@ -72,20 +80,3 @@ export default function Home({
     </>
   );
 }
-
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const apiEndpoint =
-    'https://storage.googleapis.com/static-mnews-tw-dev/json/matsu2023.json';
-  const response = await axios.get(apiEndpoint);
-  const { Youtube, relatedPost, Ad, Logo, Introduction } = response.data;
-
-  return {
-    props: {
-      Youtube,
-      relatedPost,
-      Ad,
-      Logo,
-      Introduction,
-    },
-  };
-};

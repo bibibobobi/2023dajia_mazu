@@ -51,14 +51,14 @@ export default function SectionIntro({
   innerRef,
   intro,
 }: SectionProps): JSX.Element {
-  const item = intro[0];
-  const content = item['Link / Content'];
+  const item = intro?.[0];
+  const content = item?.['Link / Content'];
   return (
     <Section id='intro' ref={innerRef}>
       <Title svgIcon={EventIntro} />
       <ContentWrapper>
         <ImageWrapper>
-          <Image src={item.Image} alt={item.Name} width={360} height={413} />
+          <Image src={item?.Image} alt={item?.Name} width={360} height={413} />
         </ImageWrapper>
         <Desc>
           <p>{content}</p>
