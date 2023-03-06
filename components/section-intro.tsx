@@ -14,25 +14,46 @@ const Section = styled.section`
 
 const ContentWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (min-width: 1200px) {
+    flex-direction: row;
+  }
 `;
 
 const ImageWrapper = styled.div`
   width: 360px;
   height: 413px;
-  margin-right: 36px;
+  margin-bottom: 36px;
+  margin-top: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 60px;
+    margin-top: 30px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-right: 36px;
+    margin-bottom: 0;
+  }
 `;
 
 const Desc = styled.div`
-  width: 564px;
+  width: 100%;
 
   p {
     color: #ffffff;
     font-family: var(--notosansTC-font);
     font-weight: 400;
-    font-size: 20px;
-    line-height: 180%;
+    font-size: 16px;
+    line-height: 28.8px;
+
+    @media (min-width: 768px) {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 36px;
+    }
   }
 `;
 
