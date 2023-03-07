@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
+import ShareIcons from '../components/share-icons';
 
 type LiProps = {
   active?: boolean;
@@ -120,7 +121,9 @@ export default function Navigation({ activeElement }: NavigationProps) {
           );
         })}
       </ItemsWrapper>
-      <ItemsWrapper>share icons</ItemsWrapper>
+      <ItemsWrapper>
+        <ShareIcons />
+      </ItemsWrapper>
     </Nav>
   );
 }
