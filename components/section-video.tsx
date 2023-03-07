@@ -26,7 +26,7 @@ const Section = styled.section`
   }
 
   @media (min-width: 1200px) {
-    width: 90%;
+    width: 80%;
   }
 `;
 

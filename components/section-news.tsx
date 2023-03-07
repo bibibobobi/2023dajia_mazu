@@ -9,6 +9,10 @@ const Section = styled.section`
   @media (min-width: 768px) {
     padding-top: 86px;
   }
+
+  @media (min-width: 1200px) {
+    width: 80%;
+  }
 `;
 
 interface SectionProps {

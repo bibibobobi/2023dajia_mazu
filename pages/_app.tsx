@@ -5,7 +5,7 @@ import theme from '../styles/theme';
 import { Noto_Sans_TC } from '@next/font/google';
 
 const notosansTC = Noto_Sans_TC({
-  weight: ['400', '500'],
+  weight: ['400', '500', '900'],
   style: ['normal'],
   subsets: ['latin'], //default
 });
