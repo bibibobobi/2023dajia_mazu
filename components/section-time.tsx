@@ -1,3 +1,6 @@
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useEffect, FC } from 'react';
 import styled from 'styled-components';
 import Title from './title';
 import { EventTime } from './icons/li-time';
@@ -125,9 +128,46 @@ const Row = styled.div`
   }
 `;
 
-interface SectionProps {
+type SectionProps = {
   innerRef: any;
-}
+};
+
+type RowMotionProps = {
+  className: string;
+  children: any;
+};
+
+const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  const variants = {
+    left: { x: -100, opacity: 0 },
+    right: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+  };
+
+  const direction = parseInt(className) % 2 === 1 ? 'left' : 'right';
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={direction}
+      animate={controls}
+      variants={variants}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export default function SectionTime({ innerRef }: SectionProps): JSX.Element {
   return (
@@ -136,112 +176,132 @@ export default function SectionTime({ innerRef }: SectionProps): JSX.Element {
         <Title svgIcon={EventTime} />
       </TitleWrapper>
       <Container>
-        <Row className='row1'>
-          <div>
-            <span>
-              筊定&emsp;國曆四月廿一日 農曆三月初二日 （五）晚間十一時零五分
-            </span>
-            <span className='place'>&emsp;起駕</span>
-          </div>
-        </Row>
-        <Row className='row2'>
-          <div>
-            <span className='date'>
-              國曆四月廿二日&emsp;農曆三月初三日 （六）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>彰化市南瑤宮</span>
-          </div>
-        </Row>
-        <Row className='row3'>
-          <div>
-            <span className='date'>
-              國曆四月廿三日&emsp;農曆三月初四日（日）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>西螺鎮福興宮</span>
-          </div>
-        </Row>
-        <Row className='row4'>
-          <div>
-            <span className='date'>
-              國曆四月廿四日&emsp;農曆三月初五日（一）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>新港鄉奉天宮</span>
-          </div>
-        </Row>
-        <Row className='row5'>
-          <div>
-            <span className='date'>
-              國曆四月廿五日&emsp;農曆三月初六日（二）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>上午八時・祝壽大典</span>
-          </div>
-        </Row>
-        <Row className='row6'>
-          <div>
-            <span className='date'>
-              國曆四月廿六日&emsp;農曆三月初七日（三）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>西螺鎮福興宮</span>
-          </div>
-        </Row>
-        <Row className='row7'>
-          <div>
-            <span className='date'>
-              國曆四月廿七日&emsp;農曆三月初八日（四）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>北斗鎮奠安宮</span>
-          </div>
-        </Row>
-        <Row className='row8'>
-          <div>
-            <span className='date'>
-              國曆四月廿八日&emsp;農曆三月初九日（五）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>彰化市天后宮</span>
-          </div>
-        </Row>
-        <Row className='row9'>
-          <div>
-            <span className='date'>
-              國曆四月廿九日&emsp;農曆三月初十日（六）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>駐駕</span>
-            <span className='place'>清水區朝興宮</span>
-          </div>
-        </Row>
-        <Row className='row10'>
-          <div>
-            <span className='date'>
-              國曆四月三十日&emsp;農曆三月十一日（日）
-            </span>
-          </div>
-          <div>
-            <span className='stay'>回鑾</span>
-            <span className='place'>大甲區鎮瀾宮</span>
-          </div>
-        </Row>
+        <RowMotion className='1'>
+          <Row className='row1'>
+            <div>
+              <span>
+                筊定&emsp;國曆四月廿一日 農曆三月初二日 （五）晚間十一時零五分
+              </span>
+              <span className='place'>&emsp;起駕</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='2'>
+          <Row className='row2'>
+            <div>
+              <span className='date'>
+                國曆四月廿二日&emsp;農曆三月初三日 （六）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>彰化市南瑤宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='3'>
+          <Row className='row3'>
+            <div>
+              <span className='date'>
+                國曆四月廿三日&emsp;農曆三月初四日（日）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>西螺鎮福興宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='4'>
+          <Row className='row4'>
+            <div>
+              <span className='date'>
+                國曆四月廿四日&emsp;農曆三月初五日（一）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>新港鄉奉天宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='5'>
+          <Row className='row5'>
+            <div>
+              <span className='date'>
+                國曆四月廿五日&emsp;農曆三月初六日（二）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>上午八時・祝壽大典</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='6'>
+          <Row className='row6'>
+            <div>
+              <span className='date'>
+                國曆四月廿六日&emsp;農曆三月初七日（三）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>西螺鎮福興宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='7'>
+          <Row className='row7'>
+            <div>
+              <span className='date'>
+                國曆四月廿七日&emsp;農曆三月初八日（四）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>北斗鎮奠安宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='8'>
+          <Row className='row8'>
+            <div>
+              <span className='date'>
+                國曆四月廿八日&emsp;農曆三月初九日（五）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>彰化市天后宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='9'>
+          <Row className='row9'>
+            <div>
+              <span className='date'>
+                國曆四月廿九日&emsp;農曆三月初十日（六）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>駐駕</span>
+              <span className='place'>清水區朝興宮</span>
+            </div>
+          </Row>
+        </RowMotion>
+        <RowMotion className='10'>
+          <Row className='row10'>
+            <div>
+              <span className='date'>
+                國曆四月三十日&emsp;農曆三月十一日（日）
+              </span>
+            </div>
+            <div>
+              <span className='stay'>回鑾</span>
+              <span className='place'>大甲區鎮瀾宮</span>
+            </div>
+          </Row>
+        </RowMotion>
       </Container>
     </Section>
   );

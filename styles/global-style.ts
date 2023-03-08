@@ -13,6 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     background-attachment: fixed;
     background-color:	#98413A;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   a {
     color: inherit;
