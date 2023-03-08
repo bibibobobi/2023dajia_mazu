@@ -18,6 +18,7 @@ const Nav = styled.nav`
   bottom: 0%;
   height: 44px;
   background: #d0a84f;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
   align-items: center;
   padding: 0 14px;

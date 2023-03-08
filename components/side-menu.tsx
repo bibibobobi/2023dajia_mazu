@@ -104,6 +104,7 @@ const ToggleButton = styled.div<ToggleButtonProps>`
   position: fixed;
   top: 12px;
   right: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   display: flex;
   align-items: center;
