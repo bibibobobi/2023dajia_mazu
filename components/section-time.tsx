@@ -1,6 +1,6 @@
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, FC } from 'react';
+import { useEffect, useMemo, FC } from 'react';
 import styled from 'styled-components';
 import Title from './title';
 import { EventTime } from './icons/li-time';
@@ -140,19 +140,30 @@ const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-  const variants = {
-    left: { x: -100, opacity: 0 },
-    right: { x: 100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, bounce: 0.3 } },
-  };
+  const variants = useMemo(
+    () => ({
+      left: { x: -100, opacity: 0 },
+      right: { x: 100, opacity: 0 },
+      visible: { x: 0, opacity: 1, transition: { duration: 0.8, bounce: 0.3 } },
+    }),
+    []
+  );
 
   const direction = parseInt(className) % 2 === 1 ? 'left' : 'right';
+
+  // useEffect(() => {
+  //   if (inView) {
+  //     controls.start('visible');
+  //   }
+  // }, [controls, inView]);
 
   useEffect(() => {
     if (inView) {
       controls.start('visible');
+    } else {
+      controls.set(direction === 'left' ? variants.left : variants.right);
     }
-  }, [controls, inView]);
+  }, [controls, inView, direction, variants]);
 
   return (
     <motion.div

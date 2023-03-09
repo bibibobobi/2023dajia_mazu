@@ -180,7 +180,6 @@ export default function SectionNews({
   innerRef,
   relatedPost,
 }: SectionProps): JSX.Element {
-  console.log(relatedPost);
   return (
     <Section id='news' ref={innerRef}>
       <Title svgIcon={RelatedNews} />
