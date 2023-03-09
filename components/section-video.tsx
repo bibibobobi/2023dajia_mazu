@@ -125,15 +125,15 @@ export default function SectionVideo({
     pauseOnMouseEnter: true,
   });
 
-  // Disable autoplay on touch devices
-  // useEffect(() => {
-  //   const touchDevice = window.matchMedia(
-  //     '(hover: none) and (pointer: coarse)'
-  //   ).matches;
-  //   if (touchDevice) {
-  //     setSwiperAutoplay({ ...swiperAutoplay, delay: 300000 });
-  //   }
-  // }, []);
+  // Extend the autoplay delay to 5 secs on touch devices
+  useEffect(() => {
+    const touchDevice = window.matchMedia(
+      '(hover: none) and (pointer: coarse)'
+    ).matches;
+    if (touchDevice) {
+      setSwiperAutoplay({ ...swiperAutoplay, delay: 5000 });
+    }
+  }, []);
 
   const handleSlideChange = (swiper: any) => {
     setCurrentIndex(swiper.activeIndex);

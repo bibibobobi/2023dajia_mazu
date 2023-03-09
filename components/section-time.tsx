@@ -144,7 +144,7 @@ const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
   const variants = {
     left: { x: -100, opacity: 0 },
     right: { x: 100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 1, bounce: 0.3 } },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.8, bounce: 0.3 } },
   };
 
   const direction = parseInt(className) % 2 === 1 ? 'left' : 'right';
@@ -162,7 +162,6 @@ const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
       initial={direction}
       animate={controls}
       variants={variants}
-      // transition={{ duration: 1 }}
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.94 }}
     >
