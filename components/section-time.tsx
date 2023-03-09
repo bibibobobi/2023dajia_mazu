@@ -7,7 +7,6 @@ import { EventTime } from './icons/li-time';
 
 const Section = styled.section`
   width: 100%;
-
   margin: 0 auto;
 
   @media (min-width: 768px) {

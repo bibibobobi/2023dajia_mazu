@@ -74,7 +74,7 @@ export default function Home(): JSX.Element {
       <SectionVideo innerRef={ref1} playlist={playlist} />
       <SectionIntro innerRef={ref2} intro={Introduction} />
       <SectionTime innerRef={ref3} />
-      <SectionNews innerRef={ref4} />
+      <SectionNews innerRef={ref4} relatedPost={relatedPost} />
 
       <BottomNav activeElement={activeElement} />
     </>

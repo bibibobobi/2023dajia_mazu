@@ -4,6 +4,7 @@ import Title from '../components/title';
 import { EventIntro } from '../components/icons/li-intro';
 
 const Section = styled.section`
+  padding-top: 40px;
   width: 90%;
 
   margin: 0 auto;
@@ -87,7 +88,8 @@ export default function SectionIntro({
         <ImageWrapper>
           <Image
             src='/images/pilgrimage.svg'
-            alt={item?.Name}
+            alt='pilgrimage'
+            priority
             width={360}
             height={413}
             style={{ height: '100%', width: '100%' }}

@@ -79,6 +79,7 @@ export default function Header() {
         <Image
           src='/images/hero-mob.svg'
           alt='Hero Image desktop'
+          priority
           width={320}
           height={329}
         />

@@ -154,7 +154,7 @@ export default function SectionVideo({
     playerRef.current = event.target;
   };
 
-  // Disable Swiper autoplay by setting delay to 300000 if any video is playing
+  // Disable Swiper autoplay by setting delay to 600000 if any video is playing
   const handleVideoStateChange = (event: any) => {
     if (event.data === 1) {
       // Playing
@@ -163,7 +163,7 @@ export default function SectionVideo({
         ...swiperAutoplay,
         disableOnInteraction: true,
         pauseOnMouseEnter: false,
-        delay: 300000, // Set delay to 5 mins if video is playing
+        delay: 600000, // Set delay to 10 mins if video is playing
       });
     } else {
       setIsVideoPlaying(false);
