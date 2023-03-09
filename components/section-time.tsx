@@ -144,7 +144,7 @@ const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
     () => ({
       left: { x: -100, opacity: 0 },
       right: { x: 100, opacity: 0 },
-      visible: { x: 0, opacity: 1, transition: { duration: 0.8, bounce: 0.3 } },
+      visible: { x: 0, opacity: 1, transition: { duration: 0.5, bounce: 0.3 } },
     }),
     []
   );
@@ -172,8 +172,8 @@ const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
       initial={direction}
       animate={controls}
       variants={variants}
-      whileHover={{ scale: 1.06 }}
-      whileTap={{ scale: 0.94 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       {children}
     </motion.div>

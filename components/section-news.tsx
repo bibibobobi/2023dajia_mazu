@@ -58,6 +58,13 @@ const NewsCard = styled.div`
   width: 100%;
   height: 132px;
   width: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(148, 187, 233, 0.1) 100%,
+    rgba(250, 216, 129, 0.1) 0%
+  );
+  transition: all 0.3s ease-in-out;
+
   a {
     display: flex;
     @media (min-width: 768px) {
@@ -68,10 +75,9 @@ const NewsCard = styled.div`
   :hover {
     background: linear-gradient(
       120deg,
-      rgba(250, 216, 129, 0.2) 0%,
-      rgba(148, 187, 233, 0.2) 100%
+      rgba(250, 216, 129, 0.3) 0%,
+      rgba(148, 187, 233, 0.3) 100%
     );
-    transition: all 0.2s ease-in-out;
   }
 
   @media (min-width: 768px) {
@@ -158,13 +164,14 @@ const Button = styled.button`
   font-weight: 500;
   font-size: 20px;
   letter-spacing: 3px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
   :hover {
     background: linear-gradient(
       120deg,
-      rgba(250, 216, 129, 0.2) 0%,
-      rgba(148, 187, 233, 0.2) 100%
+      rgba(250, 216, 129, 0.3) 0%,
+      rgba(148, 187, 233, 0.3) 100%
     );
-    transition: all 0.2s ease-in-out;
   }
 
   color: #d0a84f;
