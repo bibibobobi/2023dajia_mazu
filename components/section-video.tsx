@@ -142,16 +142,25 @@ export default function SectionVideo({
     const players = document.getElementsByTagName('iframe');
     for (let i = 0; i < players.length; i++) {
       const player = players[i].contentWindow;
-      player?.postMessage(
-        '{"event":"command","func":"pauseVideo","args":""}',
-        '*'
-      );
+      if (player) {
+        // Check if player is not null
+        player.postMessage(
+          '{"event":"command","func":"pauseVideo","args":""}',
+          '*'
+        );
+      }
     }
   };
 
   const handlePlayerReady = (event: any) => {
     // Save the YouTube player reference to the `playerRef` variable
     playerRef.current = event.target;
+
+    // Get the current origin of the application
+    const origin = window.location.origin;
+
+    // Set the origin value for the YouTube player
+    playerRef.current.getIframe().setAttribute('origin', origin);
   };
 
   // Disable Swiper autoplay by setting delay to 600000 if any video is playing
@@ -173,6 +182,10 @@ export default function SectionVideo({
         pauseOnMouseEnter: true,
         delay: 3000, // Set delay to 3 secs if video is not playing or paused
       });
+    }
+    if (playerRef.current) {
+      // Check if playerRef.current is not null
+      playerRef.current.getPlayerState();
     }
   };
 
