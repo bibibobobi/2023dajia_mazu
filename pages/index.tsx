@@ -3,16 +3,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makePlaylist, makeAdList } from '../utils/utils';
 import Head from 'next/head';
-import Navigation from '../components/nav';
+import Navigation from 'components/nav';
 import SideMenu from 'components/side-menu';
-import BottomNav from '../components/nav-mob';
-import Header from '../components/header';
-import SectionVideo from '../components/section-video';
+import BottomNav from 'components/nav-mob';
+import Header from 'components/header';
+import SectionVideo from 'components/section-video';
 import SectionIntro from 'components/section-intro';
 import SectionTime from 'components/section-time';
 import SectionNews from 'components/section-news';
 import AdPc from 'components/ad-pc';
 import AdMob from 'components/ad-mob';
+import MainLogos from 'components/main-logos';
+import Footer from 'components/footer';
 
 export default function Home(): JSX.Element {
   const [data, setData] = useState({
@@ -47,6 +49,7 @@ export default function Home(): JSX.Element {
 
   const adListPc = makeAdList(Ad.slice(0, 8));
   const adListMobile = makeAdList(Ad.slice(8));
+  const logoList = makeAdList(Logo);
 
   useEffect(() => {
     if (inView1) {
@@ -87,7 +90,8 @@ export default function Home(): JSX.Element {
 
       <AdPc adListPc={adListPc} />
       <AdMob adListMobile={adListMobile} />
-
+      <MainLogos />
+      <Footer logoList={logoList} />
       <BottomNav activeElement={activeElement} />
     </>
   );

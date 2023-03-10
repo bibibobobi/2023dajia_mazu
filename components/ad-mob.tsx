@@ -49,8 +49,6 @@ export default function AdMob({ adListMobile }: AdMobProps) {
     <Section>
       <SwiperWrapper>
         <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
