@@ -10,6 +10,7 @@ const Section = styled.section`
   margin: 0 auto;
   @media (min-width: 768px) {
     padding-top: 86px;
+    padding-bottom: 50px;
   }
 
   @media (min-width: 1200px) {

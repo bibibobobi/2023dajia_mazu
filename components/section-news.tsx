@@ -22,7 +22,7 @@ interface SectionProps {
 
 const Section = styled.section`
   padding-top: 40px;
-  padding-bottom: 60px;
+  /* padding-bottom: 60px; */
   justify-content: center;
   width: 90%;
 
