@@ -63,6 +63,7 @@ const NewsCard = styled.div`
     rgba(148, 187, 233, 0.1) 100%,
     rgba(250, 216, 129, 0.1) 0%
   );
+  backdrop-filter: blur(3px);
   transition: all 0.3s ease-in-out;
 
   a {
@@ -78,6 +79,7 @@ const NewsCard = styled.div`
       rgba(250, 216, 129, 0.3) 0%,
       rgba(148, 187, 233, 0.3) 100%
     );
+    backdrop-filter: blur(3px);
   }
 
   @media (min-width: 768px) {
