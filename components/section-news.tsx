@@ -58,12 +58,12 @@ const NewsCard = styled.div`
   width: 100%;
   height: 132px;
   width: 100%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     120deg,
     rgba(148, 187, 233, 0.1) 100%,
     rgba(250, 216, 129, 0.1) 0%
   );
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px); */
   transition: all 0.3s ease-in-out;
 
   a {
