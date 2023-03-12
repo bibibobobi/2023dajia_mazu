@@ -15,6 +15,7 @@ import AdPc from 'components/ad-pc';
 import AdMob from 'components/ad-mob';
 import MainLogos from 'components/main-logos';
 import Footer from 'components/footer';
+import ScrollToTopButton from 'components/scroll-to-top-button';
 
 export default function Home(): JSX.Element {
   const [data, setData] = useState({
@@ -92,6 +93,7 @@ export default function Home(): JSX.Element {
       <AdMob adListMobile={adListMobile} />
       <MainLogos />
       <Footer logoList={logoList} />
+      <ScrollToTopButton />
       <BottomNav activeElement={activeElement} />
     </>
   );
