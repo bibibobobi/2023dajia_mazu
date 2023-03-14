@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: PingFang TC;
     font-size: 16px;
     margin: 0;
-    background-image: url('/images/Group 212.svg');
+    background-image: url('https://res.cloudinary.com/di1olybhs/image/upload/v1678763757/Group_212_b76cpl.svg');
     background-attachment: fixed;
     background-color:	#98413A;
     scroll-behavior: smooth;

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { imageLoader } from '../loader';
 
 const Section = styled.div`
   padding: 40px 0;
@@ -58,6 +59,7 @@ export default function MainLogos() {
             height={36}
             priority
             style={{ height: '100%', width: '100%' }}
+            loader={imageLoader}
           />
         </div>
         <div className='x'>
@@ -68,6 +70,7 @@ export default function MainLogos() {
             height={16}
             priority
             style={{ height: '100%', width: '100%' }}
+            loader={imageLoader}
           />
         </div>
         <div className='temple'>
@@ -78,6 +81,7 @@ export default function MainLogos() {
             height={36}
             priority
             style={{ height: '100%', width: '100%' }}
+            loader={imageLoader}
           />
         </div>
       </LogosWrapper>

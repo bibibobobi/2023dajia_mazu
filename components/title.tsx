@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import { imageLoader } from '../loader';
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -79,6 +80,7 @@ export default function Title(props: TitleProps) {
         width={40}
         height={40}
         className='dot-left'
+        loader={imageLoader}
       />
       <SvgWrapper>
         <props.svgIcon />
@@ -89,6 +91,7 @@ export default function Title(props: TitleProps) {
         width={40}
         height={40}
         className='dot-right'
+        loader={imageLoader}
       />
       <Line />
     </TitleWrapper>

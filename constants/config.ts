@@ -11,26 +11,14 @@ let mnewsSiteUrl: string;
 switch (env) {
   case 'dev':
     gaTrackingId = 'UA-196534751-2';
-    timeInterval = 30;
     protocol = 'https';
     host = 'dev.mnews.tw';
-    staticFileDestination = `${protocol}://${host}/projects/${projectName}`;
+    staticFileDestination = `${protocol}://${host}/projects/dev-${projectName}`;
     mnewsSiteUrl = `${protocol}://${host}`;
 
     break;
-  case 'staging':
-    gaTrackingId = 'UA-196534751-3';
-    timeInterval = 60;
-    protocol = 'https';
-    host = 'staging.mnews.tw';
-    staticFileDestination = `${protocol}://${host}/projects/${projectName}`;
-    mnewsSiteUrl = `${protocol}://${host}`;
-
-    break;
-
   case 'prod': {
     gaTrackingId = 'UA-196534751-1';
-    timeInterval = 60;
     protocol = 'https';
     host = 'www.mnews.tw';
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`;
@@ -40,7 +28,6 @@ switch (env) {
   }
   default: {
     gaTrackingId = 'UA-196534751-2';
-    timeInterval = 30;
     staticFileDestination = `${protocol}://${host}:3000`;
     mnewsSiteUrl = `https://dev.mnews.tw`;
 

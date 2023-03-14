@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { imageLoader } from '../loader';
 
 const HeaderWrapper = styled.header`
   width: 90%;
@@ -64,6 +65,7 @@ export default function Header() {
           width={970}
           height={400}
           priority
+          loader={imageLoader}
         />
       </HeroPcWrapper>
       <HeroTabletWrapper>
@@ -73,6 +75,7 @@ export default function Header() {
           width={723}
           height={299}
           priority
+          loader={imageLoader}
         />
       </HeroTabletWrapper>
       <HeroMobWrapper>
@@ -82,6 +85,7 @@ export default function Header() {
           priority
           width={320}
           height={329}
+          loader={imageLoader}
         />
       </HeroMobWrapper>
     </HeaderWrapper>

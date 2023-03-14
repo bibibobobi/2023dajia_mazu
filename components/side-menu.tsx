@@ -2,8 +2,10 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MenuIcon } from './icons/menu-icon';
+import { imageLoader } from '../loader';
+import CopyAlert from './copy-alert';
 
 type SideMenuWrapperProps = {
   show: boolean;
@@ -123,6 +125,25 @@ const ToggleButton = styled.div<ToggleButtonProps>`
 
 export default function SideMenu({ activeElement }: NavigationProps) {
   const [show, setShow] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [origin, setOrigin] = useState<string>('');
+
+  function handleCopy(): void {
+    navigator.clipboard.writeText(origin);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  }
+
+  function handleLinkClick(): void {
+    handleCopy();
+  }
+
+  useEffect(() => {
+    setOrigin(() => window.location.origin);
+  }, []);
+
   return (
     <>
       <ToggleButton
@@ -163,6 +184,7 @@ export default function SideMenu({ activeElement }: NavigationProps) {
               width={80}
               height={15}
               priority
+              loader={imageLoader}
             />
           </a>
           <Link href='/'>
@@ -171,34 +193,47 @@ export default function SideMenu({ activeElement }: NavigationProps) {
               alt='tachia temple logo'
               width={80}
               height={24}
+              loader={imageLoader}
             />
           </Link>
         </LogoWrapper>
         <IconsWrapper>
-          <Link href='/'>
+          <a
+            href={`https://www.facebook.com/share.php?u=${origin}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <Image
               src='/icons/fb.svg'
               alt='facebook logo'
               width={28}
               height={28}
+              loader={imageLoader}
             />
-          </Link>
-          <Link href='/'>
+          </a>
+          <a
+            href={`https://social-plugins.line.me/lineit/share?url=${origin}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <Image
               src='/icons/line.svg'
               alt='line logo'
               width={28}
               height={28}
+              loader={imageLoader}
             />
-          </Link>
-          <Link href='/'>
+          </a>
+          <button onClick={handleLinkClick}>
             <Image
               src='/icons/link.svg'
               alt='copy link'
               width={28}
               height={28}
+              loader={imageLoader}
             />
-          </Link>
+          </button>
+          <CopyAlert showAlert={showAlert} />
         </IconsWrapper>
       </SideMenuWrapper>
     </>

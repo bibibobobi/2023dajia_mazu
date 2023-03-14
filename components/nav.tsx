@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { imageLoader } from '../loader';
 import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
 import ShareIcons from '../components/share-icons';
@@ -97,6 +98,7 @@ export default function Navigation({ activeElement }: NavigationProps) {
             width={128}
             height={24}
             priority
+            loader={imageLoader}
           />
         </a>
         <Link href='/'>
@@ -105,6 +107,7 @@ export default function Navigation({ activeElement }: NavigationProps) {
             alt='tachia temple logo'
             width={80}
             height={24}
+            loader={imageLoader}
           />
         </Link>
       </LogoWrapper>
