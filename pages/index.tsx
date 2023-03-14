@@ -70,11 +70,6 @@ export default function Home(): JSX.Element {
     <>
       <Head>
         <title>2023 大甲媽祖遶境｜鏡新聞</title>
-        <meta
-          name='description'
-          content='《鏡新聞》為您帶來 2023 年大甲媽祖遶境最新新聞'
-        />
-        <link rel='icon' type='image/x-icon' href={'/icons/favicon.ico'} />
       </Head>
       <Navigation activeElement={activeElement} />
       <SideMenu activeElement={activeElement} />

@@ -176,7 +176,7 @@ const RowMotion: FC<RowMotionProps> = ({ className, children }) => {
 
 export default function SectionTime({ innerRef }: SectionProps): JSX.Element {
   return (
-    <Section id='time' ref={innerRef}>
+    <Section id='schedule' ref={innerRef}>
       <TitleWrapper>
         <Title svgIcon={EventTime} />
       </TitleWrapper>
