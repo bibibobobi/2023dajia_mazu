@@ -130,10 +130,10 @@ const ToggleButton = styled.div<ToggleButtonProps>`
 export default function SideMenu({ activeElement }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [origin, setOrigin] = useState<string>('');
+  const [href, setHref] = useState('');
 
   function handleCopy(): void {
-    navigator.clipboard.writeText(origin);
+    navigator.clipboard.writeText(href);
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
@@ -145,8 +145,10 @@ export default function SideMenu({ activeElement }: NavigationProps) {
   }
 
   useEffect(() => {
-    setOrigin(() => window.location.origin);
+    setHref(() => window.location.href);
   }, []);
+
+  console.log(href);
 
   return (
     <>
@@ -201,14 +203,14 @@ export default function SideMenu({ activeElement }: NavigationProps) {
         </LogoWrapper>
         <IconsWrapper>
           <a
-            href={`https://www.facebook.com/share.php?u=${origin}`}
+            href={`https://www.facebook.com/share.php?u=${href}`}
             target='_blank'
             rel='noopener noreferrer'
           >
             <Image src={fb} alt='facebook logo' width={28} height={28} />
           </a>
           <a
-            href={`https://social-plugins.line.me/lineit/share?url=${origin}`}
+            href={`https://social-plugins.line.me/lineit/share?url=${href}`}
             target='_blank'
             rel='noopener noreferrer'
           >
