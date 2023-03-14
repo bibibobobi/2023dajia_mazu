@@ -30,11 +30,13 @@ const LogosWrapper = styled.div`
 
   .x {
     margin: 0 36px;
+    margin-bottom: 8px;
     width: 13px;
     height: 12px;
     @media (min-width: 768px) {
       width: 16px;
       height: 16px;
+      margin-bottom: 0px;
     }
   }
 

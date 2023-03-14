@@ -10,7 +10,7 @@ const Button = styled.button`
   position: fixed;
   top: calc(100vh - 100px);
   right: 16px;
-  z-index: 99;
+  z-index: 9;
   svg {
     width: 28px;
     height: 28px;
