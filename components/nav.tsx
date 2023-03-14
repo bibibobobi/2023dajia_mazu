@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { imageLoader } from '../loader';
 import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
 import ShareIcons from '../components/share-icons';
+import mnewsLogo from '../public/icons/mnews-logo.svg';
+import tachiatempleLogo from '../public/icons/tachiatemple-logo.svg';
 
 type LiProps = {
   active?: boolean;
@@ -93,21 +94,19 @@ export default function Navigation({ activeElement }: NavigationProps) {
           rel='noreferrer noopenner'
         >
           <Image
-            src='/icons/mnews-logo.svg'
+            src={mnewsLogo}
             alt='mnews logo'
             width={128}
             height={24}
             priority
-            loader={imageLoader}
           />
         </a>
         <Link href='/'>
           <Image
-            src='/icons/tachiatemple-logo.svg'
+            src={tachiatempleLogo}
             alt='tachia temple logo'
             width={80}
             height={24}
-            loader={imageLoader}
           />
         </Link>
       </LogoWrapper>

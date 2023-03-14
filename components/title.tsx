@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import { imageLoader } from '../loader';
+import redDot from '../public/images/reddot.svg';
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -75,23 +75,21 @@ export default function Title(props: TitleProps) {
     <TitleWrapper>
       <Line />
       <Image
-        src='/images/reddot.svg'
+        src={redDot}
         alt='red dot'
         width={40}
         height={40}
         className='dot-left'
-        loader={imageLoader}
       />
       <SvgWrapper>
         <props.svgIcon />
       </SvgWrapper>
       <Image
-        src='/images/reddot.svg'
+        src={redDot}
         alt='red dot'
         width={40}
         height={40}
         className='dot-right'
-        loader={imageLoader}
       />
       <Line />
     </TitleWrapper>

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { imageLoader } from '../loader';
+import mnewsLogo from '../public/icons/mnews-logo.svg';
+import iconX from '../public/icons/x.svg';
+import tachiatempleLogo from '../public/icons/tachiatemple-logo.svg';
 
 const Section = styled.div`
   padding: 40px 0;
@@ -53,35 +55,32 @@ export default function MainLogos() {
       <LogosWrapper>
         <div className='mnews'>
           <Image
-            src='/icons/mnews-logo.svg'
+            src={mnewsLogo}
             alt='mnews logo'
             width={180}
             height={36}
             priority
             style={{ height: '100%', width: '100%' }}
-            loader={imageLoader}
           />
         </div>
         <div className='x'>
           <Image
-            src='/icons/x.svg'
+            src={iconX}
             alt='mnews logo'
             width={16}
             height={16}
             priority
             style={{ height: '100%', width: '100%' }}
-            loader={imageLoader}
           />
         </div>
         <div className='temple'>
           <Image
-            src='/icons/tachiatemple-logo.svg'
+            src={tachiatempleLogo}
             alt='tachia temple logo'
             width={120}
             height={36}
             priority
             style={{ height: '100%', width: '100%' }}
-            loader={imageLoader}
           />
         </div>
       </LogosWrapper>

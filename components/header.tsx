@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { imageLoader } from '../loader';
+import heroPc from '../public/images/hero-pc.svg';
+import heroMob from '../public/images/hero-mob.svg';
 
 const HeaderWrapper = styled.header`
   width: 90%;
@@ -60,32 +61,29 @@ export default function Header() {
     <HeaderWrapper>
       <HeroPcWrapper>
         <Image
-          src='/images/hero-pc.svg'
+          src={heroPc}
           alt='Hero Image desktop'
           width={970}
           height={400}
           priority
-          loader={imageLoader}
         />
       </HeroPcWrapper>
       <HeroTabletWrapper>
         <Image
-          src='/images/hero-pc.svg'
+          src={heroPc}
           alt='Hero Image desktop'
           width={723}
           height={299}
           priority
-          loader={imageLoader}
         />
       </HeroTabletWrapper>
       <HeroMobWrapper>
         <Image
-          src='/images/hero-mob.svg'
+          src={heroMob}
           alt='Hero Image desktop'
           priority
           width={320}
           height={329}
-          loader={imageLoader}
         />
       </HeroMobWrapper>
     </HeaderWrapper>

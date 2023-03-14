@@ -4,8 +4,12 @@ import Link from 'next/link';
 import { navLinks } from 'constants/nav-links';
 import { useState, useEffect } from 'react';
 import { MenuIcon } from './icons/menu-icon';
-import { imageLoader } from '../loader';
 import CopyAlert from './copy-alert';
+import mnewsLogo from '../public/icons/mnews-logo.svg';
+import tachiatempleLogo from '../public/icons/tachiatemple-logo.svg';
+import fb from '../public/icons/fb.svg';
+import line from '../public/icons/line.svg';
+import link from '../public/icons/link.svg';
 
 type SideMenuWrapperProps = {
   show: boolean;
@@ -179,21 +183,19 @@ export default function SideMenu({ activeElement }: NavigationProps) {
             rel='noreferrer noopenner'
           >
             <Image
-              src='/icons/mnews-logo.svg'
+              src={mnewsLogo}
               alt='mnews logo'
               width={80}
               height={15}
               priority
-              loader={imageLoader}
             />
           </a>
           <Link href='/'>
             <Image
-              src='/icons/tachiatemple-logo.svg'
+              src={tachiatempleLogo}
               alt='tachia temple logo'
               width={80}
               height={24}
-              loader={imageLoader}
             />
           </Link>
         </LogoWrapper>
@@ -203,35 +205,17 @@ export default function SideMenu({ activeElement }: NavigationProps) {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Image
-              src='/icons/fb.svg'
-              alt='facebook logo'
-              width={28}
-              height={28}
-              loader={imageLoader}
-            />
+            <Image src={fb} alt='facebook logo' width={28} height={28} />
           </a>
           <a
             href={`https://social-plugins.line.me/lineit/share?url=${origin}`}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Image
-              src='/icons/line.svg'
-              alt='line logo'
-              width={28}
-              height={28}
-              loader={imageLoader}
-            />
+            <Image src={line} alt='line logo' width={28} height={28} />
           </a>
           <button onClick={handleLinkClick}>
-            <Image
-              src='/icons/link.svg'
-              alt='copy link'
-              width={28}
-              height={28}
-              loader={imageLoader}
-            />
+            <Image src={link} alt='copy link' width={28} height={28} />
           </button>
           <CopyAlert showAlert={showAlert} />
         </IconsWrapper>

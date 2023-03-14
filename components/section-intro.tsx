@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Title from '../components/title';
 import { EventIntro } from '../components/icons/li-intro';
-import { imageLoader } from '../loader';
+import pilgrimage from '../public/images/pilgrimage.svg';
 
 const Section = styled.section`
   padding-top: 40px;
@@ -89,13 +89,12 @@ export default function SectionIntro({
       <ContentWrapper>
         <ImageWrapper>
           <Image
-            src='/images/pilgrimage.svg'
+            src={pilgrimage}
             alt='pilgrimage'
             priority
             width={360}
             height={413}
             style={{ height: '100%', width: '100%' }}
-            loader={imageLoader}
           />
         </ImageWrapper>
         <Desc>

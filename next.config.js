@@ -23,8 +23,7 @@ const nextConfig = {
     },
   },
   images: {
-    loader: 'custom',
-    loaderFile: './loader.ts',
+    unoptimized: true,
   },
 };
 
