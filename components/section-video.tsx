@@ -120,18 +120,18 @@ export default function SectionVideo({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [swiperAutoplay, setSwiperAutoplay] = useState({
-    delay: 3000,
+    delay: 5000,
     disableOnInteraction: true,
     pauseOnMouseEnter: true,
   });
 
-  // Extend the autoplay delay to 5 secs on touch devices
+  // Extend the autoplay delay to 10 secs on touch devices
   useEffect(() => {
     const touchDevice = window.matchMedia(
       '(hover: none) and (pointer: coarse)'
     ).matches;
     if (touchDevice) {
-      setSwiperAutoplay({ ...swiperAutoplay, delay: 5000 });
+      setSwiperAutoplay({ ...swiperAutoplay, delay: 10000 });
     }
   }, []);
 
@@ -180,7 +180,7 @@ export default function SectionVideo({
         ...swiperAutoplay,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
-        delay: 3000, // Set delay to 3 secs if video is not playing or paused
+        delay: 5000, // Set delay to 5 secs if video is not playing or paused
       });
     }
     if (playerRef.current) {

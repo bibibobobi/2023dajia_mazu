@@ -178,7 +178,7 @@ export default function SideMenu({ activeElement }: NavigationProps) {
         </ItemsWrapper>
         <LogoWrapper>
           <a
-            href='https://www.mnews.tw/'
+            href='https://mnews.tw/?utm_source=project&utm_medium=2023mazu'
             target='_blank'
             rel='noreferrer noopenner'
           >
@@ -190,14 +190,14 @@ export default function SideMenu({ activeElement }: NavigationProps) {
               priority
             />
           </a>
-          <Link href='/'>
+          <div>
             <Image
               src={tachiatempleLogo}
               alt='tachia temple logo'
               width={80}
               height={24}
             />
-          </Link>
+          </div>
         </LogoWrapper>
         <IconsWrapper>
           <a

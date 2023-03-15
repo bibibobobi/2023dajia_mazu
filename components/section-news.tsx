@@ -219,7 +219,7 @@ export default function SectionNews({
       <ButtonWrapper>
         <Button>
           <a
-            href='https://www.mnews.tw/'
+            href='https://mnews.tw/?utm_source=project&utm_medium=2023mazu'
             target='_blank'
             rel='noopener noreferrer nofollow'
           >
