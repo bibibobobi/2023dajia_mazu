@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { gaClickEvent } from 'utils/utils';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,6 +16,7 @@ import { Autoplay } from 'swiper';
 type Ad = {
   image: string;
   url: string;
+  order: string;
 };
 
 type AdPcProps = {
@@ -33,14 +35,22 @@ const SwiperWrapper = styled.div`
   width: 900px;
 `;
 
-export default function AdPc({ adListPc }: AdPcProps) {
+export default function AdPc({
+  adListPc,
+  label,
+}: AdPcProps & { label: string }) {
   if (!adListPc.length) {
     return null; // Don't render the section if adListPc is empty
   }
 
   const slides = adListPc.map((ad, index) => (
     <SwiperSlide key={index}>
-      <a href={ad.url} target='_blank' rel='noopener noreferrer'>
+      <a
+        href={ad.url}
+        target='_blank'
+        rel='noopener noreferrer'
+        onClick={() => gaClickEvent(`點擊${label}_第${ad.order}則_{${ad.url}}`)}
+      >
         <Image src={ad.image} alt={`Ad ${index}`} width={900} height={280} />
       </a>
     </SwiperSlide>

@@ -78,14 +78,15 @@ export default function Home(): JSX.Element {
       <SectionVideo innerRef={ref1} playlist={playlist} />
       <SectionIntro innerRef={ref2} intro={Introduction} />
 
-      <AdPc adListPc={adListPc} />
-      <AdMob adListMobile={adListMobile} />
+      <AdPc adListPc={adListPc} label='廣告（一）' />
+      <AdMob adListMobile={adListMobile} label='廣告（一）' />
 
       <SectionTime innerRef={ref3} />
       <SectionNews innerRef={ref4} relatedPost={relatedPost} />
 
-      <AdPc adListPc={adListPc} />
-      <AdMob adListMobile={adListMobile} />
+      <AdPc adListPc={adListPc} label='廣告（二）' />
+      <AdMob adListMobile={adListMobile} label='廣告（二）' />
+
       <MainLogos />
       <Footer logoList={logoList} />
       <ScrollToTopButton />

@@ -148,8 +148,6 @@ export default function SideMenu({ activeElement }: NavigationProps) {
     setHref(() => window.location.href);
   }, []);
 
-  console.log(href);
-
   return (
     <>
       <ToggleButton

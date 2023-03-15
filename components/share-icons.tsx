@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import { ShareButton } from '@readr-media/share-button';
+import { gaClickEvent } from '../utils/utils';
 
 export default function ShareIcons() {
   function handleClickButton() {
-    console.log('click share-button');
+    gaClickEvent('點擊分享按鈕');
   }
   function handleClickLine() {
-    console.log('click Line icon');
+    gaClickEvent('點擊Line分享按鈕');
   }
   function handleClickFB() {
-    console.log('click FB icon');
+    gaClickEvent('點擊Facebook分享按鈕');
   }
   function handleClickLink() {
-    console.log('click Link icon');
+    gaClickEvent('點擊複製連結按鈕');
   }
 
   return (

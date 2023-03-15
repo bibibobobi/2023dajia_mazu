@@ -1,3 +1,5 @@
+import ReactGA from 'react-ga';
+
 export function makePlaylist(data: { [key: string]: string | number }[]) {
   const playlist: string[] = [];
   for (let i = 0; i < data?.length; i++) {
@@ -26,6 +28,7 @@ interface AdData {
 interface Ad {
   image: string;
   url: string;
+  order: string;
 }
 
 export function makeAdList(data: AdData[]): Ad[] {
@@ -33,9 +36,19 @@ export function makeAdList(data: AdData[]): Ad[] {
   for (const item of data) {
     const image = item.Image.trim();
     const linkContent = item['Link / Content'].trim();
-    if (image !== '' && linkContent !== '') {
-      adList.push({ image, url: linkContent });
+    const order = item.order.trim();
+    if (image !== '' && linkContent !== '' && order !== '') {
+      adList.push({ image, url: linkContent, order });
     }
   }
   return adList;
 }
+
+export const gaClickEvent = (label: string) => {
+  ReactGA.event({
+    category: 'Project/大甲媽',
+    action: 'click',
+    label: label,
+    nonInteraction: false,
+  });
+};

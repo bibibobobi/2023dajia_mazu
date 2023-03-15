@@ -2,7 +2,9 @@ import { GlobalStyles } from '../styles/global-style';
 import { ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';
 import theme from '../styles/theme';
+import Script from 'next/script';
 import { Noto_Sans_TC } from '@next/font/google';
+import { gaTrackingId } from '../constants/config';
 
 const notosansTC = Noto_Sans_TC({
   weight: ['400', '500', '900'],
@@ -13,6 +15,18 @@ const notosansTC = Noto_Sans_TC({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+        strategy='afterInteractive'
+      />
+      <Script id='ga-script' strategy='afterInteractive'>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaTrackingId}');
+        `}
+      </Script>
       <style jsx global>{`
         //can use in single page
         :root {
