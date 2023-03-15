@@ -52,3 +52,12 @@ export const gaClickEvent = (label: string) => {
     nonInteraction: false,
   });
 };
+
+export const gaScrollEvent = (label: string) => {
+  ReactGA.event({
+    category: 'Project/大甲媽',
+    action: 'scroll',
+    label: label,
+    nonInteraction: true,
+  });
+};

@@ -1,7 +1,7 @@
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { makePlaylist, makeAdList } from '../utils/utils';
+import { makePlaylist, makeAdList, gaScrollEvent } from '../utils/utils';
 import Head from 'next/head';
 import Navigation from 'components/nav';
 import SideMenu from 'components/side-menu';
@@ -31,7 +31,24 @@ export default function Home(): JSX.Element {
   const { ref: ref3, inView: inView3 } = useInView({ threshold: 0.2 });
   const { ref: ref4, inView: inView4 } = useInView({ threshold: 0.2 });
 
+  const { ref: adRef1, inView: ad1inView } = useInView({ threshold: 0.1 });
+  const { ref: adRef2, inView: ad2inView } = useInView({ threshold: 0.1 });
+
   const [activeElement, setActiveElement] = useState<string>('');
+
+  // Send gaScrollEvents
+  const [ad1Sent, setAd1Sent] = useState(false);
+  const [ad2Sent, setAd2Sent] = useState(false);
+
+  if (ad1inView && !ad1Sent) {
+    gaScrollEvent('滑到廣告（一）');
+    setAd1Sent(true);
+  }
+
+  if (ad2inView && !ad2Sent) {
+    gaScrollEvent('滑到廣告（二）');
+    setAd2Sent(true);
+  }
 
   useEffect(() => {
     axios
@@ -78,12 +95,14 @@ export default function Home(): JSX.Element {
       <SectionVideo innerRef={ref1} playlist={playlist} />
       <SectionIntro innerRef={ref2} intro={Introduction} />
 
+      <div ref={adRef1} />
       <AdPc adListPc={adListPc} label='廣告（一）' />
       <AdMob adListMobile={adListMobile} label='廣告（一）' />
 
       <SectionTime innerRef={ref3} />
       <SectionNews innerRef={ref4} relatedPost={relatedPost} />
 
+      <div ref={adRef2} />
       <AdPc adListPc={adListPc} label='廣告（二）' />
       <AdMob adListMobile={adListMobile} label='廣告（二）' />
 
