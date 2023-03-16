@@ -125,13 +125,13 @@ export default function SectionVideo({
     pauseOnMouseEnter: true,
   });
 
-  // Extend the autoplay delay to 10 secs on touch devices
+  // Extend the autoplay delay to 15 secs on touch devices
   useEffect(() => {
     const touchDevice = window.matchMedia(
       '(hover: none) and (pointer: coarse)'
     ).matches;
     if (touchDevice) {
-      setSwiperAutoplay({ ...swiperAutoplay, delay: 10000 });
+      setSwiperAutoplay({ ...swiperAutoplay, delay: 15000 });
     }
   }, []);
 
