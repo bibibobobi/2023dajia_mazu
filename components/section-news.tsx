@@ -5,11 +5,11 @@ import Title from '../components/title';
 import { RelatedNews } from '../components/icons/li-news';
 
 type HeroImage = {
-  mobile: string;
+  urlMobileSized: string;
 };
 
 type RelatedPost = {
-  title: string;
+  name: string;
   updatedAt: string;
   heroImage: HeroImage;
   url: string;
@@ -202,14 +202,14 @@ export default function SectionNews({
             >
               <ImageWrapper>
                 <Image
-                  src={`${post.heroImage.mobile}`}
-                  alt={`${post.title}`}
+                  src={`${post.heroImage.urlMobileSized}`}
+                  alt={`${post.name}`}
                   width={216}
                   height={144}
                 />
               </ImageWrapper>
               <ContentWrapper>
-                <PostTitle>{post.title}</PostTitle>
+                <PostTitle>{post.name}</PostTitle>
                 <Date>{dayjs(post.updatedAt).format('YYYY/MM/DD HH:mm')}</Date>
               </ContentWrapper>
             </a>
