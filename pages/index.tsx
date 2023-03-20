@@ -52,7 +52,7 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     axios
-      .get('https://statics-dev.mnews.tw/json/matsu2023.json')
+      .get('https://statics.mnews.tw/json/matsu2023.json')
       .then((response) => {
         const data = response.data;
         setData(data);
