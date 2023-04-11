@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import heroPc from '../public/images/hero-pc.svg';
-import heroMob from '../public/images/hero-mob.svg';
+import heroPc from '../public/images/new-hero-pc.svg';
+import heroMob from '../public/images/new-hero-mob.svg';
 
 const HeaderWrapper = styled.header`
   width: 90%;
