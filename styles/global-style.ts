@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -9,9 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: PingFang TC;
     font-size: 16px;
     margin: 0;
-    background-image: url('https://res.cloudinary.com/di1olybhs/image/upload/v1678763757/Group_212_b76cpl.svg');
-    background-attachment: fixed;
-    background-color:	#98413A;
+    background-color:	#9E003F;
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
