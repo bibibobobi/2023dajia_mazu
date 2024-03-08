@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name='description'
-            content='《鏡新聞》為您帶來 2023 年大甲媽祖遶境最新新聞'
+            content='《鏡新聞》為您帶來 2024 年大甲媽祖遶境最新新聞'
           />
           <link
             rel='icon'
@@ -66,10 +66,10 @@ export default class MyDocument extends Document {
             href={`${staticFileDestination}/icons/safari-pinned-tab.svg`}
             color='#003366'
           />
-          <meta property='og:title' content='2023 大甲媽祖遶境｜鏡新聞' />
+          <meta property='og:title' content='2024 大甲媽祖遶境｜鏡新聞' />
           <meta
             property='og:description'
-            content='《鏡新聞》為您帶來 2023 年大甲媽祖遶境最新新聞'
+            content='《鏡新聞》為您帶來 2024 年大甲媽祖遶境最新新聞'
           />
           <meta
             property='og:image'

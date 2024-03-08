@@ -15,6 +15,7 @@ import SideMenu from "components/side-menu";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { staticJsonUrl } from "../constants/config";
 import { gaScrollEvent, makeAdList, makePlaylist } from "../utils/utils";
 
 export default function Home(): JSX.Element {
@@ -52,7 +53,7 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     axios
-      .get("https://statics-dev.mnews.tw/json/matsu2024.json")
+      .get(staticJsonUrl)
       .then((response) => {
         const data = response.data;
         setData(data);
@@ -86,7 +87,7 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Head>
-        <title>2023 大甲媽祖遶境｜鏡新聞</title>
+        <title>2024 大甲媽祖遶境｜鏡新聞</title>
       </Head>
       <Navigation activeElement={activeElement} />
       <SideMenu activeElement={activeElement} />

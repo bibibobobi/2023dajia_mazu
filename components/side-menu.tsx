@@ -178,7 +178,7 @@ export default function SideMenu({ activeElement }: NavigationProps) {
         </ItemsWrapper>
         <LogoWrapper>
           <a
-            href='https://mnews.tw/?utm_source=project&utm_medium=2023mazu'
+            href='https://mnews.tw/?utm_source=project&utm_medium=2024mazu'
             target='_blank'
             rel='noreferrer noopenner'
           >
