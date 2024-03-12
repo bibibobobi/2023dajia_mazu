@@ -60,19 +60,28 @@ const Li = styled.li<LiProps>`
 
   :nth-child(odd) {
     color: ${({ active }) => (active ? "#ffffff" : "#f4d9ca")};
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   :nth-child(even) {
     color: ${({ active }) => (active ? "#ffffff" : "#d8b384")};
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   :hover {
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 6px;
-    transition: 0.3s ease-in-out;
+    transition: text-decoration 0.3s ease-in-out;
   }
+
+  ${({ active }) =>
+    active &&
+    `
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    transition: text-decoration 0.3s ease-in-out;
+  `}
 
   @media (min-width: 1200px) {
     font-size: 28px;
