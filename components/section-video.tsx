@@ -192,7 +192,7 @@ export default function SectionVideo({
   return (
     <Section id='video' ref={innerRef}>
       <TitleWrapper>
-        <Title svgIcon={EventVideo} />
+        <Title title='活動影音' color="#F4D9CA" />
       </TitleWrapper>
       <SwiperWrapper>
         <Swiper

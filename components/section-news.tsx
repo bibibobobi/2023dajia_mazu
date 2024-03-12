@@ -191,7 +191,7 @@ export default function SectionNews({
 }: SectionProps): JSX.Element {
   return (
     <Section id='news' ref={innerRef}>
-      <Title svgIcon={RelatedNews} />
+       <Title title="相關新聞" color="#D8B384" />
       <NewsCardWrapper>
         {relatedPost.slice(0, 6).map((post, index) => (
           <NewsCard key={index}>

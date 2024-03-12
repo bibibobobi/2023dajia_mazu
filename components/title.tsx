@@ -5,6 +5,7 @@ import redLion from "../public/images/red-lion.svg";
 
 const TitleWrapper = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   height: 78px;
@@ -47,31 +48,35 @@ const TitleWrapper = styled.div`
 `;
 
 const Line = styled.div`
-  width: 100%;
-  height: 2px;
+  height: 1px;
   display: none;
   background-color: #e0c357;
   @media (min-width: 768px) {
     display: block;
+    width: calc((100% - 400px) / 2);
+  }
+
+  @media (min-width: 1200px) {
+    height: 2px;
   }
 `;
 
-const SvgWrapper = styled.div`
-  svg {
-    width: 104px;
-    height: 26px;
-  }
+const P = styled.p`
+  font-family: var(--notoSerifTC-font);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+  color: ${({ color }) => color || "#F4D9CA"};
 
   @media (min-width: 768px) {
-    svg {
-      width: 160px;
-      height: 40px;
-    }
+    font-size: 28px;
   }
 `;
 
 type TitleProps = {
-  svgIcon: any;
+  title: string;
+  color?: string;
 };
 
 export default function Title(props: TitleProps) {
@@ -79,9 +84,7 @@ export default function Title(props: TitleProps) {
     <TitleWrapper>
       <Line />
       <Image src={redLion} alt="red dot" className="dot-left" />
-      <SvgWrapper>
-        <props.svgIcon />
-      </SvgWrapper>
+      <P color={props.color}>{props.title}</P>
       <Image src={blueLion} alt="red dot" className="dot-right" />
       <Line />
     </TitleWrapper>

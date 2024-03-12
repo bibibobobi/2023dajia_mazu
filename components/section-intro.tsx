@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import styled from 'styled-components';
-import Title from '../components/title';
-import { EventIntro } from '../components/icons/li-intro';
-import pilgrimage from '../public/images/pilgrimage.svg';
+import Image from "next/image";
+import styled from "styled-components";
+import Title from "../components/title";
+import pilgrimage from "../public/images/pilgrimage.svg";
 
 const Section = styled.section`
   padding-top: 40px;
@@ -69,7 +68,7 @@ const Desc = styled.div`
 type IntroItem = {
   Name: string;
   Image: string;
-  'Link / Content': string;
+  "Link / Content": string;
 };
 
 interface SectionProps {
@@ -82,19 +81,19 @@ export default function SectionIntro({
   intro,
 }: SectionProps): JSX.Element {
   const item = intro?.[0];
-  const content = item?.['Link / Content'];
+  const content = item?.["Link / Content"];
   return (
-    <Section id='intro' ref={innerRef}>
-      <Title svgIcon={EventIntro} />
+    <Section id="intro" ref={innerRef}>
+      <Title title="慶典介紹" color="#D8B384" />
       <ContentWrapper>
         <ImageWrapper>
           <Image
             src={pilgrimage}
-            alt='pilgrimage'
+            alt="pilgrimage"
             priority
             width={360}
             height={413}
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: "100%", width: "100%" }}
           />
         </ImageWrapper>
         <Desc>

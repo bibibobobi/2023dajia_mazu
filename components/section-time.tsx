@@ -178,7 +178,7 @@ export default function SectionTime({ innerRef }: SectionProps): JSX.Element {
   return (
     <Section id="schedule" ref={innerRef}>
       <TitleWrapper>
-        <Title svgIcon={EventTime} />
+      <Title title='遶境時間' color="#F4D9CA" />
       </TitleWrapper>
       <Container>
         <RowMotion className="1">
