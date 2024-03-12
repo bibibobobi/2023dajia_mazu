@@ -1,10 +1,13 @@
-import Image from 'next/image';
-import styled from 'styled-components';
-import Link from 'next/link';
-import { navLinks } from 'constants/nav-links';
-import ShareIcons from '../components/share-icons';
-import mnewsLogo from '../public/icons/mnews-logo.svg';
-import tachiatempleLogo from '../public/icons/tachiatemple-logo.svg';
+import { Noto_Serif_TC } from "@next/font/google";
+import { navLinks } from "constants/nav-links";
+import Image from "next/image";
+import Link from "next/link";
+import styled from "styled-components";
+import ShareIcons from "../components/share-icons";
+import mnewsLogo from "../public/icons/mnews-logo.svg";
+import tachiatempleLogo from "../public/icons/tachiatemple-logo.svg";
+
+const font = Noto_Serif_TC({ subsets: ["latin"], weight: ["600"] });
 
 type LiProps = {
   active?: boolean;
@@ -35,46 +38,44 @@ const Nav = styled.nav`
 
 const ItemsWrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 768px) {
-    gap: 16px; /* Safari 12+ */
-    grid-gap: 16px; /* Safari 10-11 */
+    gap: 32px;
   }
 
   @media (min-width: 1200px) {
-    gap: 65px; /* Safari 12+ */
-    grid-gap: 65px; /* Safari 10-11 */
+    gap: 36px;
   }
 `;
 
 const Li = styled.li<LiProps>`
   list-style: none;
-  svg {
-    width: 104px;
-    height: 26px;
-    filter: ${(prop) =>
-      prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : 'none'};
-    transition: 0.5s ease-in-out;
-    path {
-      fill: ${(prop) => (prop.active ? '#ffffff' : '')};
-      transition: 0.3s ease-in-out;
-    }
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+  font-family: var(--notoSerifTC-font);
+
+  :nth-child(odd) {
+    color: ${({ active }) => (active ? "#ffffff" : "#f4d9ca")};
+    transition: 0.3s ease-in-out;
+  }
+  :nth-child(even) {
+    color: ${({ active }) => (active ? "#ffffff" : "#d8b384")};
+    transition: 0.3s ease-in-out;
   }
 
-  :hover svg {
-    filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7));
-    transition: 0.5s ease-in-out;
-    path {
-      fill: #ffffff;
-      transition: 0.3s ease-in-out;
-    }
+  :hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    transition: 0.3s ease-in-out;
   }
 
-  @media (min-width: 1040px) {
-    svg {
-      width: 160px;
-      height: 40px;
-    }
+  @media (min-width: 1200px) {
+    font-size: 28px;
   }
 `;
 
@@ -84,18 +85,33 @@ const LogoWrapper = styled.div`
   grid-gap: 8px; /* Safari 10-11 */
 `;
 
+const ItemShareWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  @media (min-width: 1200px) {
+    gap: 36px;
+  }
+`;
+
+const ShareWrapper = styled.div`
+  padding-top: 8px;
+`;
+
 export default function Navigation({ activeElement }: NavigationProps) {
   return (
     <Nav>
       <LogoWrapper>
         <a
-          href='https://mnews.tw/?utm_source=project&utm_medium=2024mazu'
-          target='_blank'
-          rel='noreferrer noopenner'
+          href="https://mnews.tw/?utm_source=project&utm_medium=2024mazu"
+          target="_blank"
+          rel="noreferrer noopenner"
         >
           <Image
             src={mnewsLogo}
-            alt='mnews logo'
+            alt="mnews logo"
             width={128}
             height={24}
             priority
@@ -104,28 +120,30 @@ export default function Navigation({ activeElement }: NavigationProps) {
         <div>
           <Image
             src={tachiatempleLogo}
-            alt='tachia temple logo'
+            alt="tachia temple logo"
             width={80}
             height={24}
           />
         </div>
       </LogoWrapper>
-      <ItemsWrapper>
-        {navLinks.map((item) => {
-          const isActive =
-            activeElement === item.name && activeElement !== undefined;
-          return (
-            <Li key={item.name} active={isActive}>
-              <Link href={item.href} scroll={false}>
-                <item.svgIcon />
-              </Link>
-            </Li>
-          );
-        })}
-      </ItemsWrapper>
-      <ItemsWrapper>
-        <ShareIcons />
-      </ItemsWrapper>
+      <ItemShareWrapper>
+        <ItemsWrapper>
+          {navLinks.map((item) => {
+            const isActive =
+              activeElement === item.name && activeElement !== undefined;
+            return (
+              <Li key={item.name} active={isActive}>
+                <Link href={item.href} scroll={false}>
+                  <p className={font.className}>{item.title}</p>
+                </Link>
+              </Li>
+            );
+          })}
+        </ItemsWrapper>
+        <ShareWrapper>
+          <ShareIcons />
+        </ShareWrapper>
+      </ItemShareWrapper>
     </Nav>
   );
 }

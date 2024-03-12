@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';
 import theme from '../styles/theme';
 import Script from 'next/script';
-import { Noto_Sans_TC } from '@next/font/google';
+import { Noto_Sans_TC, Noto_Serif_TC } from '@next/font/google';
 import { gaTrackingId } from '../constants/config';
 import ReactGA from 'react-ga';
 
@@ -11,6 +11,12 @@ ReactGA.initialize(`${gaTrackingId}`);
 
 const notosansTC = Noto_Sans_TC({
   weight: ['400', '500', '900'],
+  style: ['normal'],
+  subsets: ['latin'], //default
+});
+
+const notoSerifTC = Noto_Serif_TC({
+  weight: ['400', '500', '600'],
   style: ['normal'],
   subsets: ['latin'], //default
 });
@@ -35,6 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
         //can use in single page
         :root {
           --notosansTC-font: ${notosansTC.style.fontFamily};
+          --notoSerifTC-font: ${notoSerifTC.style.fontFamily};
         }
         html {
           font-family: PingFang TC, ${notosansTC.style.fontFamily};
