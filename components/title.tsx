@@ -1,13 +1,10 @@
-import { Noto_Serif_TC } from "@next/font/google";
 import Image from "next/image";
 import styled from "styled-components";
 import blueLion from "../public/images/blue-lion.svg";
 import redLion from "../public/images/red-lion.svg";
 
-const font = Noto_Serif_TC({ subsets: ["latin"], weight: ["600"] });
-
 const TitleWrapper = styled.div`
-  font-family: var(--notoSerifTC-font);
+  font-family: "Noto Serif TC";
   display: flex;
   width: 100%;
   justify-content: center;
@@ -72,7 +69,7 @@ const Line = styled.div`
 `;
 
 const P = styled.p`
-  font-family: var(--notoSerifTC-font);
+  font-family: "Noto Serif TC";
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -94,9 +91,7 @@ export default function Title(props: TitleProps) {
     <TitleWrapper>
       <Line />
       <Image src={redLion} alt="red dot" className="dot-left" />
-      <P className={font.className} color={props.color}>
-        {props.title}
-      </P>
+      <P color={props.color}>{props.title}</P>
       <Image src={blueLion} alt="red dot" className="dot-right" />
       <Line />
     </TitleWrapper>

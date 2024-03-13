@@ -11,7 +11,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color:	#9E003F;
     scroll-behavior: smooth;
     overflow-x: hidden;
-    font-family:var(--notoSerifTC-font);
   }
   a {
     color: inherit;

@@ -47,7 +47,7 @@ const Desc = styled.div`
 
   p {
     color: #ffffff;
-    font-family: var(--notosansTC-font);
+    font-family: "PingFang TC";
     font-weight: 400;
     font-size: 16px;
     line-height: 28.8px;

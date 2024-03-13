@@ -1,4 +1,3 @@
-import { Noto_Serif_TC } from "@next/font/google";
 import { navLinks } from "constants/nav-links";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,8 +5,6 @@ import styled from "styled-components";
 import ShareIcons from "../components/share-icons";
 import mnewsLogo from "../public/icons/mnews-logo.svg";
 import tachiatempleLogo from "../public/icons/tachiatemple-logo.svg";
-
-const font = Noto_Serif_TC({ subsets: ["latin"], weight: ["600"] });
 
 type LiProps = {
   active?: boolean;
@@ -56,7 +53,7 @@ const Li = styled.li<LiProps>`
   font-style: normal;
   font-weight: 600;
   line-height: 36px;
-  font-family: var(--notoSerifTC-font);
+  font-family: "Noto Serif TC";
 
   :nth-child(odd) {
     color: ${({ active }) => (active ? "#ffffff" : "#f4d9ca")};
@@ -143,7 +140,7 @@ export default function Navigation({ activeElement }: NavigationProps) {
             return (
               <Li key={item.name} active={isActive}>
                 <Link href={item.href} scroll={false}>
-                  <p className={font.className}>{item.title}</p>
+                  <p>{item.title}</p>
                 </Link>
               </Li>
             );

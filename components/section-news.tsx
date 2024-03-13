@@ -157,7 +157,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  font-family: var(--notosansTC-font);
+  font-family: 'PingFang TC';
   background-color: transparent;
   border: 1px solid #d0a84f;
   width: 288px;

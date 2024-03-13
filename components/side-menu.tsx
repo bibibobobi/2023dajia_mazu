@@ -40,7 +40,7 @@ const SideMenuWrapper = styled.nav<SideMenuWrapperProps>`
   transform: ${(prop) => (prop.show ? "translateY(0px)" : "translateX(375px)")};
   transition: 0.2s cubic-bezier(0.8, 0, 0.2, 1);
   z-index: 99;
-  font-family: var(--notoSerifTC-font);
+  font-family: "Noto Serif TC";
 
   @media (min-width: 375px) {
     transform: ${(prop) =>
@@ -70,7 +70,7 @@ const Li = styled.li<LiProps>`
   font-weight: 600;
   line-height: 36px;
   p {
-    font-family: var(--notoSerifTC-font);
+    font-family: "Noto Serif TC";
   }
 
   :nth-child(odd) {

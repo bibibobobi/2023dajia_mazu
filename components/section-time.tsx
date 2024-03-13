@@ -28,7 +28,7 @@ const TitleWrapper = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  font-family: var(--notosansTC-font);
+  font-family: "PingFang TC";
   line-height: 150%;
   font-size: 14px;
   font-weight: 400;
@@ -177,7 +177,7 @@ export default function SectionTime({ innerRef }: SectionProps): JSX.Element {
   return (
     <Section id="schedule" ref={innerRef}>
       <TitleWrapper>
-      <Title title='遶境時間' color="#F4D9CA" />
+        <Title title="遶境時間" color="#F4D9CA" />
       </TitleWrapper>
       <Container>
         <RowMotion className="1">
