@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import dayjs from 'dayjs';
 import Title from '../components/title';
-import { RelatedNews } from '../components/icons/li-news';
 
 type HeroImage = {
   urlMobileSized: string;

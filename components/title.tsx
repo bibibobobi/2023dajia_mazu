@@ -1,7 +1,10 @@
+import { Noto_Serif_TC } from "@next/font/google";
 import Image from "next/image";
 import styled from "styled-components";
 import blueLion from "../public/images/blue-lion.svg";
 import redLion from "../public/images/red-lion.svg";
+
+const font = Noto_Serif_TC({ subsets: ["latin"], weight: ["600"] });
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -9,9 +12,15 @@ const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 78px;
+  margin-bottom: 28px;
 
   @media (min-width: 768px) {
     height: 108px;
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 60px;
   }
 
   .dot-left {
@@ -84,7 +93,9 @@ export default function Title(props: TitleProps) {
     <TitleWrapper>
       <Line />
       <Image src={redLion} alt="red dot" className="dot-left" />
-      <P color={props.color}>{props.title}</P>
+      <P className={font.className} color={props.color}>
+        {props.title}
+      </P>
       <Image src={blueLion} alt="red dot" className="dot-right" />
       <Line />
     </TitleWrapper>

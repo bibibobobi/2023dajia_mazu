@@ -24,26 +24,21 @@ const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   @media (min-width: 1200px) {
-    flex-direction: row;
   }
 `;
 
 const ImageWrapper = styled.div`
-  width: 288px;
-  height: 331px;
-  margin-bottom: 36px;
-  margin-top: 20px;
+  width: 320px;
+  margin-bottom: 28px;
 
   @media (min-width: 768px) {
-    width: 360px;
-    height: 413px;
-    margin-bottom: 60px;
-    margin-top: 30px;
+    width: 640px;
+    margin-bottom: 48px;
   }
 
   @media (min-width: 1200px) {
+    width: 920;
     margin-right: 36px;
-    margin-bottom: 0;
   }
 `;
 
