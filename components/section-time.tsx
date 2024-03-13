@@ -2,7 +2,6 @@ import { motion, useAnimation } from "framer-motion";
 import { FC, useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
-import { EventTime } from "./icons/li-time";
 import Title from "./title";
 
 const Section = styled.section`

@@ -6,12 +6,12 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   html, body {
-    font-family: PingFang TC;
     font-size: 16px;
     margin: 0;
     background-color:	#9E003F;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    font-family:var(--notoSerifTC-font);
   }
   a {
     color: inherit;

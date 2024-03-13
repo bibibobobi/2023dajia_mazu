@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Image from 'next/image';
-import dayjs from 'dayjs';
-import Title from '../components/title';
+import dayjs from "dayjs";
+import Image from "next/image";
+import styled from "styled-components";
+import Title from "../components/title";
 
 type HeroImage = {
   urlMobileSized: string;
@@ -157,6 +157,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
+  font-family: var(--notosansTC-font);
   background-color: transparent;
   border: 1px solid #d0a84f;
   width: 288px;
@@ -189,15 +190,15 @@ export default function SectionNews({
   relatedPost,
 }: SectionProps): JSX.Element {
   return (
-    <Section id='news' ref={innerRef}>
-       <Title title="相關新聞" color="#D8B384" />
+    <Section id="news" ref={innerRef}>
+      <Title title="相關新聞" color="#D8B384" />
       <NewsCardWrapper>
         {relatedPost.slice(0, 6).map((post, index) => (
           <NewsCard key={index}>
             <a
               href={post.url}
-              target='_blank'
-              rel='noopener noreferrer nofollow'
+              target="_blank"
+              rel="noopener noreferrer nofollow"
             >
               <ImageWrapper>
                 <Image
@@ -209,7 +210,7 @@ export default function SectionNews({
               </ImageWrapper>
               <ContentWrapper>
                 <PostTitle>{post.name}</PostTitle>
-                <Date>{dayjs(post.updatedAt).format('YYYY/MM/DD HH:mm')}</Date>
+                <Date>{dayjs(post.updatedAt).format("YYYY/MM/DD HH:mm")}</Date>
               </ContentWrapper>
             </a>
           </NewsCard>
@@ -218,9 +219,9 @@ export default function SectionNews({
       <ButtonWrapper>
         <Button>
           <a
-            href='https://www.mnews.tw/topic/0158ce98-8b44-4045-b2ca-88f4d8380e81?utm_source=project&utm_medium=2024mazu'
-            target='_blank'
-            rel='noopener noreferrer nofollow'
+            href="https://www.mnews.tw/topic/0158ce98-8b44-4045-b2ca-88f4d8380e81?utm_source=project&utm_medium=2024mazu"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
           >
             看更多
           </a>
