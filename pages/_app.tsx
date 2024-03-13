@@ -43,10 +43,6 @@ export default function App({ Component, pageProps }: AppProps) {
           --notosansTC-font: ${notosansTC.style.fontFamily};
           --notoSerifTC-font: ${notoSerifTC.style.fontFamily};
         }
-        html {
-          font-family: ${notosansTC.style.fontFamily},
-            ${notoSerifTC.style.fontFamily};
-        }
       `}</style>
       <GlobalStyles />
       <ThemeProvider theme={theme}>

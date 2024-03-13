@@ -7,6 +7,7 @@ import redLion from "../public/images/red-lion.svg";
 const font = Noto_Serif_TC({ subsets: ["latin"], weight: ["600"] });
 
 const TitleWrapper = styled.div`
+  font-family: var(--notoSerifTC-font);
   display: flex;
   width: 100%;
   justify-content: center;
