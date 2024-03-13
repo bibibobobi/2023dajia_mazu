@@ -59,6 +59,9 @@ const Container = styled.div`
   .row5,
   .row7,
   .row9 {
+    border: 1px solid #e0c357;
+    background: #b5074c;
+    color: #fff;
     border-radius: 0px 20px 20px 0px;
     @media (min-width: 768px) {
       border-radius: 5px 20px 20px 5px;
@@ -73,6 +76,9 @@ const Container = styled.div`
   .row6,
   .row8,
   .row10 {
+    border: 1px solid #e0c357;
+    background: #830c3c;
+    color: #e8aeaf;
     border-radius: 20px 0px 0px 20px;
     margin-left: calc(100% - 301px);
     @media (min-width: 768px) {
@@ -82,28 +88,6 @@ const Container = styled.div`
     @media (min-width: 1200px) {
       border-radius: 30px 10px 10px 30px;
     }
-  }
-
-  .row1,
-  .row4,
-  .row7,
-  .row10 {
-    background: #d0a84f;
-    color: #622e2a;
-  }
-
-  .row2,
-  .row5,
-  .row8 {
-    background: #b77435;
-    color: #000000;
-  }
-
-  .row3,
-  .row6,
-  .row9 {
-    background: #000000;
-    color: #e2862e;
   }
 `;
 
