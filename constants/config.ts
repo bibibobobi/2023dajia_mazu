@@ -33,7 +33,7 @@ switch (env) {
     gaTrackingId = "UA-196534751-2";
     staticFileDestination = `${protocol}://${host}:3000`;
     mnewsSiteUrl = `https://dev.mnews.tw`;
-    staticJsonUrl = "https://statics-dev.mnews.tw/json/matsu2024.json";
+    staticJsonUrl = "https://statics-dev.mnews.tw/json/matsu2023.json";
 
     break;
   }
