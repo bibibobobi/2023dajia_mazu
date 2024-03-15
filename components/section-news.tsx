@@ -1,11 +1,15 @@
+import Image from "@readr-media/react-image";
 import dayjs from "dayjs";
-import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import Title from "../components/title";
 
 type HeroImage = {
-  urlMobileSized: string;
+  urlDesktopSized?: string;
+  urlTabletSized?: string;
+  urlMobileSized?: string;
+  urlTinySized?: string;
+  urlOriginal?: string;
 };
 
 type RelatedPost = {
@@ -178,32 +182,57 @@ export default function SectionNews({
   innerRef,
   relatedPost,
 }: SectionProps): JSX.Element {
+  function formateHeroImage(heroImage: HeroImage) {
+    const images: {
+      [key: string]: string;
+    } = {};
+
+    images.w3200 = heroImage?.urlOriginal ?? "";
+    images.w2400 = heroImage?.urlDesktopSized ?? "";
+    images.w1600 = heroImage?.urlTabletSized ?? "";
+    images.w400 = heroImage?.urlMobileSized ?? "";
+
+    return images;
+  }
+
   return (
     <Section id="news" ref={innerRef}>
       <Title title="相關新聞" color="#D8B384" />
       <NewsCardWrapper>
-        {relatedPost.slice(0, 6).map((post, index) => (
-          <NewsCard key={index}>
-            <Link
-              href={post.url}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              <ImageWrapper>
-                <Image
-                  src={`${post.heroImage.urlMobileSized}`}
-                  alt={`${post.name}`}
-                  width={216}
-                  height={144}
-                />
-              </ImageWrapper>
-              <ContentWrapper>
-                <PostTitle>{post.name}</PostTitle>
-                <Date>{dayjs(post.updatedAt).format("YYYY/MM/DD HH:mm")}</Date>
-              </ContentWrapper>
-            </Link>
-          </NewsCard>
-        ))}
+        {relatedPost.slice(0, 6).map((post, index) => {
+          const formattedHeroImage = formateHeroImage(post?.heroImage);
+          return (
+            <NewsCard key={index}>
+              <Link
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                <ImageWrapper>
+                  <Image
+                    images={formattedHeroImage}
+                    alt={post.name}
+                    loadingImage="/images/loading.svg"
+                    defaultImage="/images/image-default.jpg"
+                    rwd={{
+                      mobile: "100vw",
+                      tablet: "100vw",
+                      laptop: "100vw",
+                      desktop: "100vw",
+                      default: "100vw",
+                    }}
+                  />
+                </ImageWrapper>
+                <ContentWrapper>
+                  <PostTitle>{post.name}</PostTitle>
+                  <Date>
+                    {dayjs(post.updatedAt).format("YYYY/MM/DD HH:mm")}
+                  </Date>
+                </ContentWrapper>
+              </Link>
+            </NewsCard>
+          );
+        })}
       </NewsCardWrapper>
       <ButtonWrapper>
         <Button>

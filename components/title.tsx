@@ -10,15 +10,15 @@ const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 78px;
-  margin-bottom: 28px;
+  margin: 28px 0;
 
   @media (min-width: 768px) {
     height: 108px;
-    margin-bottom: 48px;
+    margin: 48px 0;
   }
 
   @media (min-width: 1200px) {
-    margin-bottom: 60px;
+    margin: 60px 0;
   }
 
   .dot-left {
