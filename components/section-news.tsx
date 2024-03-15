@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import Link from "next/link";
 import styled from "styled-components";
 import Title from "../components/title";
+import { staticFileDestination } from "../constants/config";
 
 type HeroImage = {
   urlDesktopSized?: string;
@@ -213,8 +214,8 @@ export default function SectionNews({
                   <Image
                     images={formattedHeroImage}
                     alt={post.name}
-                    loadingImage="/images/loading.svg"
-                    defaultImage="/images/image-default.jpg"
+                    loadingImage={`${staticFileDestination}/images/loading.svg`}  
+                    defaultImage={`${staticFileDestination}/images/image-default.jpg`} 
                     rwd={{
                       mobile: "100vw",
                       tablet: "100vw",
