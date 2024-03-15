@@ -1,15 +1,15 @@
-import Image from 'next/image';
-import styled from 'styled-components';
-import Link from 'next/link';
-import { navLinks } from 'constants/nav-links';
-import { useState, useEffect } from 'react';
-import { MenuIcon } from './icons/menu-icon';
-import CopyAlert from './copy-alert';
-import mnewsLogo from '../public/icons/mnews-logo.svg';
-import tachiatempleLogo from '../public/icons/tachiatemple-logo.svg';
-import fb from '../public/icons/fb.svg';
-import line from '../public/icons/line.svg';
-import link from '../public/icons/link.svg';
+import { navLinks } from "constants/nav-links";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import fb from "../public/icons/fb.svg";
+import line from "../public/icons/line.svg";
+import link from "../public/icons/link.svg";
+import mnewsLogo from "../public/icons/mnews-logo.svg";
+import tachiatempleLogo from "../public/icons/tachiatemple-logo.svg";
+import CopyAlert from "./copy-alert";
+import { MenuIcon } from "./icons/menu-icon";
 
 type SideMenuWrapperProps = {
   show: boolean;
@@ -31,19 +31,20 @@ const SideMenuWrapper = styled.nav<SideMenuWrapperProps>`
   right: 0%;
   top: 0%;
   bottom: 0%;
-  height: calc(100vh - 44px);
+  height: calc(100dvh - 44px);
   background: rgba(20, 4, 4, 0.8);
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  visibility: ${(prop) => (prop.show ? 'visible' : 'hidden')};
-  transform: ${(prop) => (prop.show ? 'translateY(0px)' : 'translateX(375px)')};
+  visibility: ${(prop) => (prop.show ? "visible" : "hidden")};
+  transform: ${(prop) => (prop.show ? "translateY(0px)" : "translateX(375px)")};
   transition: 0.2s cubic-bezier(0.8, 0, 0.2, 1);
   z-index: 99;
+  font-family: "Noto Serif TC";
 
   @media (min-width: 375px) {
     transform: ${(prop) =>
-      prop.show ? 'translateY(0px)' : 'translateX(767px)'};
+      prop.show ? "translateY(0px)" : "translateX(767px)"};
   }
 
   @media (min-width: 768px) {
@@ -63,29 +64,32 @@ type LiProps = {
 
 const Li = styled.li<LiProps>`
   list-style: none;
-  :not(:last-child) {
-    padding-bottom: 25px;
+
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+  p {
+    font-family: "Noto Serif TC";
   }
 
-  svg {
-    width: 121px;
-    height: 30px;
-    filter: ${(prop) =>
-      prop.active ? 'drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7))' : ''};
-    path {
-      fill: ${(prop) => (prop.active ? '#ffffff' : '')};
-      transition: 0.3s ease-in-out;
-    }
+  :nth-child(odd) {
+    color: ${({ active }) => (active ? "#ffffff" : "#f4d9ca")};
+    transition: 0.3s ease-in-out;
+  }
+  :nth-child(even) {
+    color: ${({ active }) => (active ? "#ffffff" : "#d8b384")};
+    transition: 0.3s ease-in-out;
   }
 
-  :hover svg {
-    filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.7));
-    transition: 0.5s ease-in-out;
-    path {
-      fill: #ffffff;
-      transition: 0.3s ease-in-out;
-    }
-  }
+  ${({ active }) =>
+    active &&
+    `
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    transition: text-decoration 0.3s ease-in-out;
+  `}
 `;
 
 const LogoWrapper = styled.div`
@@ -101,6 +105,7 @@ const IconsWrapper = styled.div`
   grid-gap: 8px; /* Safari 10-11 */
   color: #fff;
   padding-bottom: 84px;
+  padding-left: 8px;
 `;
 
 const ToggleButton = styled.div<ToggleButtonProps>`
@@ -119,7 +124,7 @@ const ToggleButton = styled.div<ToggleButtonProps>`
   svg {
     max-width: 28px;
     transition-duration: 0.1s;
-    transform: ${(prop) => (prop.show ? 'rotate(90deg)' : 'rotate(0deg)')};
+    transform: ${(prop) => (prop.show ? "rotate(90deg)" : "rotate(0deg)")};
   }
 
   @media (min-width: 768px) {
@@ -130,7 +135,7 @@ const ToggleButton = styled.div<ToggleButtonProps>`
 export default function SideMenu({ activeElement }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [href, setHref] = useState('');
+  const [href, setHref] = useState("");
 
   function handleCopy(): void {
     navigator.clipboard.writeText(href);
@@ -170,7 +175,7 @@ export default function SideMenu({ activeElement }: NavigationProps) {
                     setShow(!show);
                   }}
                 >
-                  <item.svgIcon />
+                  <p>{item.title}</p>
                 </Link>
               </Li>
             );
@@ -178,13 +183,13 @@ export default function SideMenu({ activeElement }: NavigationProps) {
         </ItemsWrapper>
         <LogoWrapper>
           <a
-            href='https://mnews.tw/?utm_source=project&utm_medium=2023mazu'
-            target='_blank'
-            rel='noreferrer noopenner'
+            href="https://mnews.tw/?utm_source=project&utm_medium=2024mazu"
+            target="_blank"
+            rel="noreferrer noopenner"
           >
             <Image
               src={mnewsLogo}
-              alt='mnews logo'
+              alt="mnews logo"
               width={80}
               height={15}
               priority
@@ -193,7 +198,7 @@ export default function SideMenu({ activeElement }: NavigationProps) {
           <div>
             <Image
               src={tachiatempleLogo}
-              alt='tachia temple logo'
+              alt="tachia temple logo"
               width={80}
               height={24}
             />
@@ -202,20 +207,20 @@ export default function SideMenu({ activeElement }: NavigationProps) {
         <IconsWrapper>
           <a
             href={`https://www.facebook.com/share.php?u=${href}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Image src={fb} alt='facebook logo' width={28} height={28} />
+            <Image src={fb} alt="facebook logo" width={28} height={28} />
           </a>
           <a
             href={`https://social-plugins.line.me/lineit/share?url=${href}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Image src={line} alt='line logo' width={28} height={28} />
+            <Image src={line} alt="line logo" width={28} height={28} />
           </a>
           <button onClick={handleLinkClick}>
-            <Image src={link} alt='copy link' width={28} height={28} />
+            <Image src={link} alt="copy link" width={28} height={28} />
           </button>
           <CopyAlert showAlert={showAlert} />
         </IconsWrapper>

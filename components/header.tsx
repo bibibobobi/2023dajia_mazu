@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import styled from 'styled-components';
-import heroPc from '../public/images/new-hero-pc.svg';
-import heroMob from '../public/images/new-hero-mob.svg';
+import Image from "next/image";
+import styled from "styled-components";
+import heroMob from "../public/images/2024hero-mob.svg";
+import heroPc from "../public/images/2024hero-pc.svg";
 
 const HeaderWrapper = styled.header`
   width: 90%;
@@ -62,7 +62,7 @@ export default function Header() {
       <HeroPcWrapper>
         <Image
           src={heroPc}
-          alt='Hero Image desktop'
+          alt="Hero Image desktop"
           width={970}
           height={400}
           priority
@@ -71,7 +71,7 @@ export default function Header() {
       <HeroTabletWrapper>
         <Image
           src={heroPc}
-          alt='Hero Image desktop'
+          alt="Hero Image desktop"
           width={723}
           height={299}
           priority
@@ -80,7 +80,7 @@ export default function Header() {
       <HeroMobWrapper>
         <Image
           src={heroMob}
-          alt='Hero Image desktop'
+          alt="Hero Image desktop"
           priority
           width={320}
           height={329}

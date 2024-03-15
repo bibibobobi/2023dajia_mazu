@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import styled from "styled-components";
 
 type Logo = {
   image: string;
@@ -65,7 +64,7 @@ export default function Footer({ logoList }: LogoProps) {
       <LogosWrapper>
         {logoList.slice(0, 5)?.map((logo, index) => (
           <img
-            className='image'
+            className="image"
             key={index}
             src={logo.image}
             alt={`sponsor logo ${index}`}
@@ -75,7 +74,7 @@ export default function Footer({ logoList }: LogoProps) {
       <LogosWrapper>
         {logoList.slice(5, 10)?.map((logo, index) => (
           <img
-            className='image'
+            className="image"
             key={index}
             src={logo.image}
             alt={`sponsor logo ${index}`}
@@ -83,9 +82,9 @@ export default function Footer({ logoList }: LogoProps) {
         ))}
       </LogosWrapper>
       <LogosWrapper>
-        {logoList.slice(10, 12)?.map((logo, index) => (
+        {logoList.slice(10, 15)?.map((logo, index) => (
           <img
-            className='image'
+            className="image"
             key={index}
             src={logo.image}
             alt={`sponsor logo ${index}`}

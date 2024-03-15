@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@readr-media/react-image": "^2.2.1",
     "@readr-media/share-button": "^1.0.3",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",

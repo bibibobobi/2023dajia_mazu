@@ -1,21 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import Title from '../components/title';
-import { EventVideo } from '../components/icons/li-video';
+import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import Title from "../components/title";
 
 // Import Youtube components
-import YouTube from 'react-youtube';
+import YouTube from "react-youtube";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // import required modules for Swiper
-import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
+import { Autoplay, Keyboard, Mousewheel, Navigation, Pagination } from "swiper";
 
 const Section = styled.section`
   width: 100%;
@@ -65,9 +64,9 @@ const SwiperWrapper = styled.div`
   .swiper-button-prev,
   .swiper-button-next {
     display: none;
-    color: #ffffff86;
+    color: #e0c257bb;
     :hover {
-      color: #ffffffeb;
+      color: #E0C357;
     }
     @media (min-width: 1200px) {
       display: block;
@@ -75,14 +74,14 @@ const SwiperWrapper = styled.div`
   }
 
   .swiper-pagination-bullet {
-    background: #0d0505;
-    border: 1.5px solid #000000;
+    background: #fff;
+    border: 1px solid #000000;
     width: 12px;
     height: 12px;
   }
   .swiper-pagination-bullet-active {
-    background: #ddcf21;
-    border: 1.5px solid #000000;
+    background: #e0c357;
+    border: 1px solid #000000;
     width: 12px;
     height: 12px;
   }
@@ -128,7 +127,7 @@ export default function SectionVideo({
   // Extend the autoplay delay to 15 secs on touch devices
   useEffect(() => {
     const touchDevice = window.matchMedia(
-      '(hover: none) and (pointer: coarse)'
+      "(hover: none) and (pointer: coarse)"
     ).matches;
     if (touchDevice) {
       setSwiperAutoplay({ ...swiperAutoplay, delay: 15000 });
@@ -139,14 +138,14 @@ export default function SectionVideo({
     setCurrentIndex(swiper.activeIndex);
 
     // Pause all videos when the slide changes
-    const players = document.getElementsByTagName('iframe');
+    const players = document.getElementsByTagName("iframe");
     for (let i = 0; i < players.length; i++) {
       const player = players[i].contentWindow;
       if (player) {
         // Check if player is not null
         player.postMessage(
           '{"event":"command","func":"pauseVideo","args":""}',
-          '*'
+          "*"
         );
       }
     }
@@ -160,7 +159,7 @@ export default function SectionVideo({
     const origin = window.location.origin;
 
     // Set the origin value for the YouTube player
-    playerRef.current.getIframe().setAttribute('origin', origin);
+    playerRef.current.getIframe().setAttribute("origin", origin);
   };
 
   // Disable Swiper autoplay by setting delay to 600000 if any video is playing
@@ -190,9 +189,9 @@ export default function SectionVideo({
   };
 
   return (
-    <Section id='video' ref={innerRef}>
+    <Section id="video" ref={innerRef}>
       <TitleWrapper>
-        <Title svgIcon={EventVideo} />
+        <Title title="活動影音" color="#F4D9CA" />
       </TitleWrapper>
       <SwiperWrapper>
         <Swiper
@@ -206,15 +205,15 @@ export default function SectionVideo({
           keyboard={true}
           loop={true}
           modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
-          className='mySwiper'
+          className="mySwiper"
           onSlideChange={handleSlideChange}
         >
           {playlist.map((videoId, index) => (
-            <SwiperSlide key={index} className='swiper-slide'>
+            <SwiperSlide key={index} className="swiper-slide">
               <YoutubeContainer>
                 <YouTube
                   videoId={videoId}
-                  opts={{ width: '100%', height: '100%' }}
+                  opts={{ width: "100%", height: "100%" }}
                   onStateChange={handleVideoStateChange}
                   onReady={handlePlayerReady}
                 />

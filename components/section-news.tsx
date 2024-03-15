@@ -1,11 +1,16 @@
-import styled from 'styled-components';
-import Image from 'next/image';
-import dayjs from 'dayjs';
-import Title from '../components/title';
-import { RelatedNews } from '../components/icons/li-news';
+import Image from "@readr-media/react-image";
+import dayjs from "dayjs";
+import Link from "next/link";
+import styled from "styled-components";
+import Title from "../components/title";
+import { staticFileDestination } from "../constants/config";
 
 type HeroImage = {
-  urlMobileSized: string;
+  urlDesktopSized?: string;
+  urlTabletSized?: string;
+  urlMobileSized?: string;
+  urlTinySized?: string;
+  urlOriginal?: string;
 };
 
 type RelatedPost = {
@@ -42,6 +47,7 @@ const NewsCardWrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   width: 100%;
+  margin-top: -40px;
 
   @media (min-width: 768px) {
     width: 688px;
@@ -58,12 +64,6 @@ const NewsCard = styled.div`
   width: 100%;
   height: 132px;
   width: 100%;
-  /* background: linear-gradient(
-    120deg,
-    rgba(148, 187, 233, 0.1) 100%,
-    rgba(250, 216, 129, 0.1) 0%
-  );
-  backdrop-filter: blur(3px); */
   transition: all 0.3s ease-in-out;
 
   a {
@@ -71,15 +71,6 @@ const NewsCard = styled.div`
     @media (min-width: 768px) {
       flex-direction: column;
     }
-  }
-
-  :hover {
-    background: linear-gradient(
-      120deg,
-      rgba(250, 216, 129, 0.3) 0%,
-      rgba(148, 187, 233, 0.3) 100%
-    );
-    backdrop-filter: blur(3px);
   }
 
   @media (min-width: 768px) {
@@ -131,6 +122,13 @@ const PostTitle = styled.div`
   line-height: 22px;
   color: #f2f2f2;
 
+  :hover {
+    text-decoration: underline;
+    text-decoration-color: #f2f2f2;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
   height: 88px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -158,6 +156,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
+  font-family: "PingFang TC";
   background-color: transparent;
   border: 1px solid #d0a84f;
   width: 288px;
@@ -169,11 +168,7 @@ const Button = styled.button`
   background: transparent;
   transition: all 0.3s ease-in-out;
   :hover {
-    background: linear-gradient(
-      120deg,
-      rgba(250, 216, 129, 0.3) 0%,
-      rgba(148, 187, 233, 0.3) 100%
-    );
+    border: 2px solid #d0a84f;
   }
 
   color: #d0a84f;
@@ -189,42 +184,67 @@ export default function SectionNews({
   innerRef,
   relatedPost,
 }: SectionProps): JSX.Element {
+  function formateHeroImage(heroImage: HeroImage) {
+    const images: {
+      [key: string]: string;
+    } = {};
+
+    images.w3200 = heroImage?.urlOriginal ?? "";
+    images.w2400 = heroImage?.urlDesktopSized ?? "";
+    images.w1600 = heroImage?.urlTabletSized ?? "";
+    images.w400 = heroImage?.urlMobileSized ?? "";
+
+    return images;
+  }
+
   return (
-    <Section id='news' ref={innerRef}>
-      <Title svgIcon={RelatedNews} />
+    <Section id="news" ref={innerRef}>
+      <Title title="相關新聞" color="#D8B384" />
       <NewsCardWrapper>
-        {relatedPost.slice(0, 6).map((post, index) => (
-          <NewsCard key={index}>
-            <a
-              href={post.url}
-              target='_blank'
-              rel='noopener noreferrer nofollow'
-            >
-              <ImageWrapper>
-                <Image
-                  src={`${post.heroImage.urlMobileSized}`}
-                  alt={`${post.name}`}
-                  width={216}
-                  height={144}
-                />
-              </ImageWrapper>
-              <ContentWrapper>
-                <PostTitle>{post.name}</PostTitle>
-                <Date>{dayjs(post.updatedAt).format('YYYY/MM/DD HH:mm')}</Date>
-              </ContentWrapper>
-            </a>
-          </NewsCard>
-        ))}
+        {relatedPost.slice(0, 6).map((post, index) => {
+          const formattedHeroImage = formateHeroImage(post?.heroImage);
+          return (
+            <NewsCard key={index}>
+              <Link
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                <ImageWrapper>
+                  <Image
+                    images={formattedHeroImage}
+                    alt={post.name}
+                    loadingImage={`${staticFileDestination}/images/loading.svg`}  
+                    defaultImage={`${staticFileDestination}/images/image-default.jpg`} 
+                    rwd={{
+                      mobile: "100vw",
+                      tablet: "100vw",
+                      laptop: "100vw",
+                      desktop: "100vw",
+                      default: "100vw",
+                    }}
+                  />
+                </ImageWrapper>
+                <ContentWrapper>
+                  <PostTitle>{post.name}</PostTitle>
+                  <Date>
+                    {dayjs(post.updatedAt).format("YYYY/MM/DD HH:mm")}
+                  </Date>
+                </ContentWrapper>
+              </Link>
+            </NewsCard>
+          );
+        })}
       </NewsCardWrapper>
       <ButtonWrapper>
         <Button>
-          <a
-            href='https://www.mnews.tw/topic/0158ce98-8b44-4045-b2ca-88f4d8380e81?utm_source=project&utm_medium=2023mazu'
-            target='_blank'
-            rel='noopener noreferrer nofollow'
+          <Link
+            href="https://www.mnews.tw/topic/0158ce98-8b44-4045-b2ca-88f4d8380e81?utm_source=project&utm_medium=2024mazu"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
           >
             看更多
-          </a>
+          </Link>
         </Button>
       </ButtonWrapper>
     </Section>
