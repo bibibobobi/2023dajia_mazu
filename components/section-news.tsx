@@ -46,6 +46,7 @@ const NewsCardWrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   width: 100%;
+  margin-top: -40px;
 
   @media (min-width: 768px) {
     width: 688px;

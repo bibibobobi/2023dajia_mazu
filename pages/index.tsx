@@ -66,8 +66,12 @@ export default function Home(): JSX.Element {
   const { Youtube, relatedPost, Ad, Logo, Introduction } = data;
   const playlist = makePlaylist(Youtube);
 
-  const adListPc = makeAdList(Ad.slice(0, 8));
-  const adListMobile = makeAdList(Ad.slice(8));
+  const allAdList = makeAdList(Ad);
+  // Filter ads for PC
+  const adListPc = allAdList.filter((ad) => ad.note.includes("桌機"));
+  // Filter ads for Mobile
+  const adListMobile = allAdList.filter((ad) => ad.note.includes("手機"));
+
   const logoList = makeAdList(Logo);
 
   useEffect(() => {
