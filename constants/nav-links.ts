@@ -19,7 +19,7 @@ const navLinks: NavLinks[] = [
   },
   {
     name: "time",
-    title: "遶境時程",
+    title: "遶境時間",
     href: `${staticFileDestination}/#schedule`,
   },
   {

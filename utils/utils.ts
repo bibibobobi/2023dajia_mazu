@@ -36,7 +36,7 @@ export function makeAdList(data: AdData[]): Ad[] {
   const adList: Ad[] = [];
   for (const item of data) {
     const image = item.Image.trim();
-    const linkContent = item["Link / Content"].trim();
+    const linkContent = item["Image"].trim();
     const order = item.order.trim();
     const note = item.Note.trim();
     if (image !== "" && linkContent !== "" && order !== "") {
